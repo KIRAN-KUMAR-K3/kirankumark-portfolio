@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kiran Kumar K — Cybersecurity Analyst & VAPT Specialist</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cybersecurity Analyst, VAPT Specialist & Security Engineer at IISc. Expert in penetration testing, SOC operations, endpoint security, and responsible disclosure.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --white:   #ffffff;
+      --off:     #f7f8fc;
+      --off2:    #eef0f7;
+      --ink:     #0a0e1a;
+      --ink2:    #1c2235;
+      --ink3:    #2e3a52;
+      --slate:   #4a5a78;
+      --muted:   #8896b0;
+      --border:  #d8dde8;
+      --border2: #c4cad8;
+
+      --blue:    #1a47d4;
+      --blue2:   #2558e8;
+      --blue-lt: #eef2fd;
+      --blue-bd: #c5d2f8;
+
+      --red:     #d42b2b;
+      --red-lt:  #fdf0f0;
+
+      --green:   #1a8a52;
+      --green-lt:#edfaf4;
+
+      --amber:   #c47a0e;
+      --amber-lt:#fdf6e8;
+
+      --cyan:    #0a7fa8;
+      --cyan-lt: #eaf6fb;
+
+      --grad: linear-gradient(135deg, #0a0e1a 0%, #1a2748 50%, #0d1a3a 100%);
+
+      --shadow-sm: 0 1px 3px rgba(10,14,26,.06), 0 2px 8px rgba(10,14,26,.04);
+      --shadow:    0 4px 16px rgba(10,14,26,.08), 0 1px 4px rgba(10,14,26,.04);
+      --shadow-lg: 0 8px 32px rgba(10,14,26,.12), 0 2px 8px rgba(10,14,26,.06);
+      --shadow-xl: 0 20px 60px rgba(10,14,26,.15), 0 4px 16px rgba(10,14,26,.08);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--white);
+      color: var(--ink);
+      font-family: 'Outfit', sans-serif;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* ══════════════════════════════════════
+       UTILITIES
+    ══════════════════════════════════════ */
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 32px; }
+    .tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: 'Fira Code', monospace; font-size: 10px;
+      letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500;
+      padding: 3px 10px; border-radius: 2px;
+    }
+    .tag-blue  { background: var(--blue-lt);  color: var(--blue);  border: 1px solid var(--blue-bd); }
+    .tag-green { background: var(--green-lt); color: var(--green); border: 1px solid #a3d9bf; }
+    .tag-red   { background: var(--red-lt);   color: var(--red);   border: 1px solid #f3b8b8; }
+    .tag-amber { background: var(--amber-lt); color: var(--amber); border: 1px solid #f0d099; }
+    .tag-cyan  { background: var(--cyan-lt);  color: var(--cyan);  border: 1px solid #a5d8eb; }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ══════════════════════════════════════
+       NAVBAR
+    ══════════════════════════════════════ */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 1px 0 var(--border), 0 4px 20px rgba(10,14,26,.05);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 32px; max-width: 1140px; margin: 0 auto;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      font-family: 'Fira Code', monospace; font-size: 13px; font-weight: 500;
+      color: var(--ink);
+    }
+    .nav-logo-mark {
+      width: 34px; height: 34px; background: var(--ink);
+      border-radius: 8px; display: flex; align-items: center;
+      justify-content: center; color: #fff; font-size: 16px;
+    }
+    .nav-links {
+      display: flex; align-items: center; gap: 32px; list-style: none;
+    }
+    .nav-links a {
+      font-size: 13.5px; font-weight: 500; color: var(--slate);
+      letter-spacing: .2px; transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--ink); color: #fff;
+      font-size: 12.5px; font-weight: 600; letter-spacing: .3px;
+      padding: 9px 20px; border-radius: 8px;
+      transition: background .2s, transform .2s, box-shadow .2s;
+    }
+    .nav-cta:hover { background: var(--blue2); transform: translateY(-1px); box-shadow: var(--shadow); }
+
+    /* ══════════════════════════════════════
+       HERO
+    ══════════════════════════════════════ */
+    .hero {
+      min-height: 100vh;
+      background: var(--grad);
+      position: relative; overflow: hidden;
+      display: flex; align-items: center;
+      padding-top: 80px;
+    }
+
+    /* Geometric background elements */
+    .hero-geo {
+      position: absolute; inset: 0; pointer-events: none;
+    }
+    .hero-geo::before {
+      content: '';
+      position: absolute; right: -60px; top: -60px;
+      width: 600px; height: 600px;
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 50%;
+    }
+    .hero-geo::after {
+      content: '';
+      position: absolute; right: 60px; top: 60px;
+      width: 400px; height: 400px;
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 50%;
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+    .hero-glow {
+      position: absolute; right: -100px; top: 50%;
+      transform: translateY(-50%);
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(26,71,212,0.18) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    /* Diagonal slash accent */
+    .hero-slash {
+      position: absolute; bottom: -2px; left: 0; right: 0; height: 120px;
+      background: var(--white);
+      clip-path: polygon(0 100%, 100% 100%, 100% 0);
+    }
+
+    .hero-inner {
+      position: relative; z-index: 2;
+      padding: 100px 0 160px;
+    }
+
+    .hero-eyebrow {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 28px;
+      animation: heroFadeUp .8s ease both;
+    }
+    .hero-eyebrow-line {
+      width: 40px; height: 1px; background: rgba(255,255,255,0.3);
+    }
+    .hero-eyebrow-txt {
+      font-family: 'Fira Code', monospace; font-size: 11px;
+      color: rgba(255,255,255,0.5); letter-spacing: 3px; text-transform: uppercase;
+    }
+
+    .hero-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(72px, 10vw, 130px);
+      line-height: .92; letter-spacing: 1px;
+      color: #fff;
+      margin-bottom: 8px;
+      animation: heroFadeUp .9s ease .06s both;
+    }
+    .hero-name span { color: rgba(255,255,255,0.15); }
+
+    .hero-role {
+      font-family: 'Fira Code', monospace; font-size: 14px;
+      color: rgba(255,255,255,0.5); letter-spacing: 1.5px;
+      margin-bottom: 32px;
+      animation: heroFadeUp .9s ease .12s both;
+    }
+    .hero-role strong { color: #7aa4ff; font-weight: 400; }
+
+    .hero-desc {
+      font-size: 17px; font-weight: 300;
+      color: rgba(255,255,255,0.65);
+      max-width: 560px; line-height: 1.7;
+      margin-bottom: 44px;
+      animation: heroFadeUp .9s ease .18s both;
+    }
+
+    .hero-actions {
+      display: flex; gap: 14px; flex-wrap: wrap;
+      animation: heroFadeUp .9s ease .24s both;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #fff; color: var(--ink);
+      font-size: 13.5px; font-weight: 700; letter-spacing: .3px;
+      padding: 14px 28px; border-radius: 10px;
+      transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 4px 20px rgba(0,0,0,.2);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,.3); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: rgba(255,255,255,0.8);
+      font-size: 13.5px; font-weight: 500; letter-spacing: .3px;
+      padding: 13px 28px; border-radius: 10px;
+      border: 1.5px solid rgba(255,255,255,0.2);
+      transition: background .2s, border-color .2s, transform .2s;
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.4); transform: translateY(-1px); }
+
+    /* Hero stats strip */
+    .hero-stats {
+      position: absolute; bottom: 120px; right: 0; left: 0; z-index: 2;
+    }
+    .hero-stats-inner {
+      display: flex; gap: 0;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px; overflow: hidden;
+      backdrop-filter: blur(20px);
+      max-width: 680px;
+      animation: heroFadeUp .9s ease .32s both;
+    }
+    .hstat {
+      flex: 1; padding: 20px 24px; text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .hstat:last-child { border-right: none; }
+    .hstat-num {
+      font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem;
+      color: #fff; line-height: 1; display: block;
+    }
+    .hstat-lbl {
+      font-size: 10px; font-weight: 500;
+      color: rgba(255,255,255,0.4); letter-spacing: 1.5px;
+      text-transform: uppercase; margin-top: 4px;
+    }
+
+    @keyframes heroFadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ══════════════════════════════════════
+       SECTION COMMONS
+    ══════════════════════════════════════ */
+    section { padding: 96px 0; }
+    .sec-eyebrow {
+      font-family: 'Fira Code', monospace; font-size: 10.5px;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--blue2); font-weight: 500;
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 14px;
+    }
+    .sec-eyebrow::before {
+      content: ''; width: 28px; height: 1.5px; background: var(--blue2);
+    }
+    .sec-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1; letter-spacing: .5px;
+      color: var(--ink);
+    }
+    .sec-sub {
+      font-size: 16px; color: var(--slate); font-weight: 300;
+      max-width: 560px; margin-top: 14px; line-height: 1.7;
+    }
+    .sec-header { margin-bottom: 52px; }
+
+    /* ══════════════════════════════════════
+       ABOUT / PROFILE STRIP
+    ══════════════════════════════════════ */
+    .about-strip {
+      background: var(--off);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 56px 0;
+    }
+    .about-inner {
+      display: grid; grid-template-columns: 1fr 1.6fr; gap: 64px; align-items: center;
+    }
+    .about-left {}
+    .about-avatar {
+      width: 110px; height: 110px;
+      background: var(--grad);
+      border-radius: 20px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 48px; margin-bottom: 20px;
+      box-shadow: var(--shadow-lg);
+    }
+    .about-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px; color: var(--ink); letter-spacing: .5px;
+    }
+    .about-role-line {
+      font-family: 'Fira Code', monospace; font-size: 11px;
+      color: var(--muted); letter-spacing: 1.5px; margin-top: 4px;
+    }
+    .about-links {
+      display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap;
+    }
+    .about-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; font-weight: 600; color: var(--blue2);
+      border: 1.5px solid var(--blue-bd); padding: 6px 14px; border-radius: 6px;
+      background: var(--blue-lt);
+      transition: background .18s, border-color .18s, transform .18s;
+    }
+    .about-link:hover { background: var(--blue2); color: #fff; border-color: var(--blue2); transform: translateY(-1px); }
+    .about-right p {
+      font-size: 15.5px; color: var(--ink3); line-height: 1.78;
+    }
+    .about-right p + p { margin-top: 14px; }
+    .about-highlights {
+      display: flex; gap: 8px; flex-wrap: wrap; margin-top: 22px;
+    }
+
+    /* ══════════════════════════════════════
+       SERVICES
+    ══════════════════════════════════════ */
+    .services { background: var(--white); }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 20px;
+    }
+    .srv-card {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 16px; padding: 32px 28px;
+      position: relative; overflow: hidden;
+      transition: border-color .25s, box-shadow .25s, transform .25s;
+    }
+    .srv-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--srv-accent, var(--blue2));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .35s ease;
+    }
+    .srv-card:hover { border-color: var(--border2); box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+    .srv-card:hover::before { transform: scaleX(1); }
+
+    .srv-ico {
+      width: 52px; height: 52px;
+      background: var(--srv-bg, var(--blue-lt));
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; margin-bottom: 20px;
+    }
+    .srv-title {
+      font-size: 17px; font-weight: 700; color: var(--ink);
+      margin-bottom: 10px; line-height: 1.3;
+    }
+    .srv-desc { font-size: 13.5px; color: var(--slate); line-height: 1.7; }
+    .srv-tools {
+      display: flex; gap: 6px; flex-wrap: wrap; margin-top: 18px;
+    }
+    .srv-tool {
+      font-family: 'Fira Code', monospace; font-size: 9.5px;
+      background: var(--off); border: 1px solid var(--border2);
+      color: var(--slate); padding: 3px 8px; border-radius: 4px;
+    }
+
+    /* ══════════════════════════════════════
+       ACHIEVEMENTS
+    ══════════════════════════════════════ */
+    .achievements { background: var(--off); }
+    .ach-grid {
+      display: grid; grid-template-columns: repeat(2,1fr); gap: 20px;
+    }
+    .ach-card {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 14px; padding: 28px;
+      display: flex; gap: 20px; align-items: flex-start;
+      transition: box-shadow .25s, transform .25s;
+    }
+    .ach-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+    .ach-ico {
+      width: 48px; height: 48px; flex-shrink: 0;
+      border-radius: 12px; display: flex;
+      align-items: center; justify-content: center; font-size: 22px;
+    }
+    .ach-num {
+      font-family: 'Bebas Neue', sans-serif; font-size: 2.4rem;
+      color: var(--ink); line-height: 1;
+    }
+    .ach-lbl { font-size: 13px; font-weight: 600; color: var(--ink3); margin-top: 2px; }
+    .ach-desc { font-size: 12.5px; color: var(--muted); margin-top: 4px; line-height: 1.55; }
+
+    /* ══════════════════════════════════════
+       BUG BOUNTY
+    ══════════════════════════════════════ */
+    .bounty { background: var(--ink); position: relative; overflow: hidden; }
+    .bounty::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .bounty .sec-eyebrow { color: #7aa4ff; }
+    .bounty .sec-eyebrow::before { background: #7aa4ff; }
+    .bounty .sec-title { color: #fff; }
+    .bounty .sec-sub { color: rgba(255,255,255,0.5); }
+    .bounty-grid {
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 16px;
+    }
+    .bounty-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px; padding: 28px 22px;
+      text-align: center;
+      transition: background .25s, border-color .25s, transform .25s;
+      position: relative; z-index: 1;
+    }
+    .bounty-card:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.16);
+      transform: translateY(-4px);
+    }
+    .bounty-org {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem;
+      color: #fff; letter-spacing: .5px; margin-bottom: 8px;
+    }
+    .bounty-vuln {
+      font-family: 'Fira Code', monospace; font-size: 10px;
+      color: rgba(255,255,255,0.4); letter-spacing: 1px;
+    }
+    .bounty-badge {
+      margin-top: 14px;
+    }
+    .bounty-ico { font-size: 2rem; margin-bottom: 12px; display: block; }
+
+    /* ══════════════════════════════════════
+       PROJECTS / TOOLS
+    ══════════════════════════════════════ */
+    .projects { background: var(--white); }
+    .proj-grid {
+      display: grid; grid-template-columns: repeat(2,1fr); gap: 24px;
+    }
+    .proj-card {
+      border: 1.5px solid var(--border);
+      border-radius: 16px; overflow: hidden;
+      transition: box-shadow .28s, transform .28s;
+    }
+    .proj-card:hover { box-shadow: var(--shadow-xl); transform: translateY(-5px); }
+    .proj-header {
+      padding: 28px 28px 20px;
+      background: var(--grad); position: relative; overflow: hidden;
+    }
+    .proj-header::after {
+      content: '';
+      position: absolute; bottom: -1px; left: 0; right: 0; height: 40px;
+      background: var(--white);
+      clip-path: polygon(0 100%, 100% 100%, 100% 40%, 0 100%);
+    }
+    .proj-icon { font-size: 2.4rem; margin-bottom: 12px; display: block; }
+    .proj-title {
+      font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem;
+      color: #fff; letter-spacing: .5px; line-height: 1.1;
+    }
+    .proj-sub {
+      font-family: 'Fira Code', monospace; font-size: 9.5px;
+      color: rgba(255,255,255,0.45); letter-spacing: 1.5px; margin-top: 4px;
+    }
+    .proj-body { padding: 20px 28px 28px; }
+    .proj-desc { font-size: 13.5px; color: var(--slate); line-height: 1.7; margin-bottom: 18px; }
+    .proj-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 20px; }
+    .proj-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12.5px; font-weight: 700; color: var(--blue2);
+      border: 1.5px solid var(--blue-bd); padding: 9px 20px; border-radius: 8px;
+      background: var(--blue-lt);
+      transition: background .2s, color .2s, border-color .2s, transform .2s;
+    }
+    .proj-link:hover { background: var(--blue2); color: #fff; border-color: var(--blue2); transform: translateY(-1px); }
+
+    /* ══════════════════════════════════════
+       SKILLS
+    ══════════════════════════════════════ */
+    .skills { background: var(--off); }
+    .skills-grid {
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 16px;
+    }
+    .skill-group {
+      background: var(--white); border: 1.5px solid var(--border);
+      border-radius: 14px; padding: 24px;
+      transition: box-shadow .22s, transform .22s;
+    }
+    .skill-group:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+    .sg-title {
+      font-size: 12px; font-weight: 700; color: var(--ink);
+      letter-spacing: .5px; text-transform: uppercase;
+      margin-bottom: 14px; padding-bottom: 10px;
+      border-bottom: 1.5px solid var(--border);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .sg-ico { font-size: 16px; }
+    .skill-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .sk {
+      font-family: 'Fira Code', monospace; font-size: 9.5px;
+      background: var(--off); border: 1px solid var(--border2);
+      color: var(--ink3); padding: 4px 9px; border-radius: 5px;
+      transition: background .15s, color .15s;
+    }
+    .sk:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+    /* ══════════════════════════════════════
+       EXPERIENCE
+    ══════════════════════════════════════ */
+    .experience { background: var(--white); }
+    .exp-timeline { position: relative; padding-left: 28px; }
+    .exp-timeline::before {
+      content: '';
+      position: absolute; left: 0; top: 8px; bottom: 8px;
+      width: 1.5px; background: var(--border2);
+    }
+    .exp-item { position: relative; padding-bottom: 48px; }
+    .exp-item:last-child { padding-bottom: 0; }
+    .exp-dot {
+      position: absolute; left: -34px; top: 4px;
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--white); border: 2.5px solid var(--blue2);
+      box-shadow: 0 0 0 4px rgba(37,88,232,.1);
+    }
+    .exp-meta {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      gap: 20px; flex-wrap: wrap; margin-bottom: 14px;
+    }
+    .exp-role {
+      font-size: 18px; font-weight: 700; color: var(--ink);
+    }
+    .exp-org {
+      font-size: 14px; color: var(--blue2); font-weight: 500; margin-top: 3px;
+    }
+    .exp-date {
+      font-family: 'Fira Code', monospace; font-size: 11px;
+      color: var(--muted); letter-spacing: .5px;
+      background: var(--off); border: 1px solid var(--border);
+      padding: 4px 12px; border-radius: 20px; white-space: nowrap;
+    }
+    .exp-bullets { list-style: none; }
+    .exp-bullets li {
+      font-size: 14px; color: var(--ink3); line-height: 1.65;
+      padding: 5px 0 5px 20px; position: relative;
+    }
+    .exp-bullets li::before {
+      content: '▸'; position: absolute; left: 0;
+      color: var(--blue2); font-size: 11px; top: 7px;
+    }
+
+    /* ══════════════════════════════════════
+       CERTIFICATIONS
+    ══════════════════════════════════════ */
+    .certs { background: var(--off); }
+    .certs-row {
+      display: flex; gap: 16px; flex-wrap: wrap;
+    }
+    .cert-card {
+      flex: 1; min-width: 260px;
+      background: var(--white); border: 1.5px solid var(--border);
+      border-radius: 14px; padding: 24px 22px;
+      display: flex; align-items: flex-start; gap: 16px;
+      transition: box-shadow .22s, transform .22s;
+    }
+    .cert-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+    .cert-ico {
+      width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 22px;
+    }
+    .cert-name { font-size: 14px; font-weight: 700; color: var(--ink); line-height: 1.3; }
+    .cert-by { font-size: 11.5px; color: var(--muted); margin-top: 4px; }
+
+    /* ══════════════════════════════════════
+       CONTACT / CTA
+    ══════════════════════════════════════ */
+    .contact {
+      background: var(--grad); position: relative; overflow: hidden;
+      padding: 100px 0;
+    }
+    .contact::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 72px 72px;
+    }
+    .contact .sec-eyebrow { color: #7aa4ff; }
+    .contact .sec-eyebrow::before { background: #7aa4ff; }
+    .contact .sec-title { color: #fff; }
+    .contact .sec-sub { color: rgba(255,255,255,0.55); max-width: 480px; }
+    .contact-inner { position: relative; z-index: 1; }
+    .contact-cards {
+      display: flex; gap: 14px; flex-wrap: wrap; margin-top: 40px;
+    }
+    .contact-card {
+      display: flex; align-items: center; gap: 14px;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px; padding: 16px 22px;
+      transition: background .22s, border-color .22s, transform .22s;
+      color: rgba(255,255,255,0.85); font-size: 14px; font-weight: 500;
+    }
+    .contact-card:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.2); transform: translateY(-2px); }
+    .contact-card-ico { font-size: 20px; }
+
+    /* ══════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════ */
+    footer {
+      background: #06080f;
+      padding: 32px;
+      display: flex; align-items: center; justify-content: center;
+      gap: 12px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-txt {
+      font-family: 'Fira Code', monospace; font-size: 11px;
+      color: rgba(255,255,255,0.25); letter-spacing: 1px;
+    }
+    .footer-txt strong { color: rgba(255,255,255,0.45); font-weight: 400; }
+
+    /* ══════════════════════════════════════
+       SCROLL REVEAL
+    ══════════════════════════════════════ */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: .08s; }
+    .reveal-d2 { transition-delay: .16s; }
+    .reveal-d3 { transition-delay: .24s; }
+    .reveal-d4 { transition-delay: .32s; }
+
+    /* ══════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════ */
+    @media (max-width: 1020px) {
+      .services-grid { grid-template-columns: repeat(2,1fr); }
+      .skills-grid { grid-template-columns: repeat(2,1fr); }
+      .bounty-grid { grid-template-columns: repeat(2,1fr); }
+      .about-inner { grid-template-columns: 1fr; gap: 36px; }
+    }
+    @media (max-width: 720px) {
+      .nav-links { display: none; }
+      .services-grid { grid-template-columns: 1fr; }
+      .ach-grid { grid-template-columns: 1fr; }
+      .proj-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .bounty-grid { grid-template-columns: repeat(2,1fr); }
+      .hero-stats-inner { flex-wrap: wrap; }
+      .hstat { min-width: 50%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <div class="nav-logo-mark">🛡️</div>
+        kirankumark.in
+      </a>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a href="mailto:18kirankumar.k03@gmail.com" class="nav-cta">
+        🔐 Hire Me
+      </a>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero" id="home">
+    <div class="hero-geo"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-glow"></div>
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-eyebrow">
+          <div class="hero-eyebrow-line"></div>
+          <span class="hero-eyebrow-txt">Cybersecurity Analyst · IISc Bangalore</span>
+        </div>
+        <h1 class="hero-name">Kiran<br><span>Kumar</span> K</h1>
+        <p class="hero-role"><strong>VAPT Specialist</strong> · SOC Analyst · Security Engineer · Bug Bounty Hunter</p>
+        <p class="hero-desc">
+          Protecting institutions and organizations through hands-on penetration testing, endpoint security, 
+          threat detection, and responsible vulnerability disclosure — with credits from NASA and Stanford University.
+        </p>
+        <div class="hero-actions">
+          <a href="#services" class="btn-primary">⚔️ View Services</a>
+          <a href="#projects" class="btn-outline">📂 My Projects →</a>
+        </div>
+        <div class="hero-stats" style="position:relative;bottom:auto;margin-top:52px;">
+          <div class="hero-stats-inner">
+            <div class="hstat">
+              <span class="hstat-num">500+</span>
+              <div class="hstat-lbl">Devices Secured</div>
+            </div>
+            <div class="hstat">
+              <span class="hstat-num">563</span>
+              <div class="hstat-lbl">CCTV Vulns Found</div>
+            </div>
+            <div class="hstat">
+              <span class="hstat-num">200+</span>
+              <div class="hstat-lbl">Policies Enforced</div>
+            </div>
+            <div class="hstat">
+              <span class="hstat-num">4</span>
+              <div class="hstat-lbl">Bug Bounty Credits</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-slash"></div>
+  </section>
+
+  <!-- ── ABOUT ── -->
+  <div class="about-strip" id="about">
+    <div class="container">
+      <div class="about-inner">
+        <div class="about-left reveal">
+          <div class="about-avatar">👨‍💻</div>
+          <div class="about-name">Kiran Kumar K</div>
+          <div class="about-role-line">JUNIOR SECURITY ANALYST @ IISc · DIGITS</div>
+          <div class="about-links">
+            <a href="https://linkedin.com/in/kiran-kumar-k3" target="_blank" class="about-link">💼 LinkedIn</a>
+            <a href="https://github.com/KIRAN-KUMAR-K3" target="_blank" class="about-link">🐙 GitHub</a>
+            <a href="https://bugcrowd.com/KIRAN-KUMAR-K" target="_blank" class="about-link">🐛 Bugcrowd</a>
+            <a href="https://kiran-kumar-k3.github.io/cv/" target="_blank" class="about-link">📄 Portfolio CV</a>
+          </div>
+        </div>
+        <div class="about-right reveal reveal-d1">
+          <p>Results-oriented Cybersecurity Analyst with hands-on expertise in VAPT, SOC Operations, Digital Forensics, IoT Security, and enterprise endpoint management at the <strong>Indian Institute of Science (IISc)</strong> — one of India's most prestigious research institutions.</p>
+          <p>Proven track record of discovering critical vulnerabilities, managing 500+ device onboarding to Microsoft Intune, implementing 200+ security policies, and driving zero-trust security initiatives across campus infrastructure.</p>
+          <p>Active bug bounty hunter with <strong>responsible disclosures to NASA, Stanford University</strong>, and multiple government portals — demonstrating real-world impact beyond institutional boundaries.</p>
+          <div class="about-highlights">
+            <span class="tag tag-blue">🏛️ IISc · DIGITS</span>
+            <span class="tag tag-green">✅ NASA Credited</span>
+            <span class="tag tag-green">✅ Stanford Credited</span>
+            <span class="tag tag-amber">📍 Bengaluru, Karnataka</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SERVICES ── -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="sec-header reveal">
+        <div class="sec-eyebrow">What I Do</div>
+        <h2 class="sec-title">Cybersecurity Services</h2>
+        <p class="sec-sub">Enterprise-grade security expertise across offensive and defensive security disciplines, tailored for modern infrastructure.</p>
+      </div>
+      <div class="services-grid">
+
+        <div class="srv-card reveal" style="--srv-accent:#1a47d4;--srv-bg:#eef2fd;">
+          <div class="srv-ico">⚔️</div>
+          <div class="srv-title">VAPT & Penetration Testing</div>
+          <p class="srv-desc">Comprehensive vulnerability assessment and penetration testing of web apps, APIs, and infrastructure using industry-standard methodologies and OWASP Top 10 coverage.</p>
+          <div class="srv-tools">
+            <span class="srv-tool">Burp Suite Pro</span>
+            <span class="srv-tool">Metasploit</span>
+            <span class="srv-tool">Nmap</span>
+            <span class="srv-tool">SQLMap</span>
+            <span class="srv-tool">OWASP ZAP</span>
+          </div>
+        </div>
+
+        <div class="srv-card reveal reveal-d1" style="--srv-accent:#d42b2b;--srv-bg:#fdf0f0;">
+          <div class="srv-ico">🔍</div>
+          <div class="srv-title">SOC & Threat Detection</div>
+          <p class="srv-desc">24/7 threat monitoring, alert triage, EDR operations, threat hunting, and forensic investigation of live cyberattacks — identifying attack vectors and delivering hardening roadmaps.</p>
+          <div class="srv-tools">
+            <span class="srv-tool">Microsoft Sentinel</span>
+            <span class="srv-tool">Defender MDE</span>
+            <span class="srv-tool">Wazuh SIEM</span>
+            <span class="srv-tool">Splunk</span>
+          </div>
+        </div>
+
+        <div class="srv-card reveal reveal-d2" style="--srv-accent:#1a8a52;--srv-bg:#edfaf4;">
+          <div class="srv-ico">💻</div>
+          <div class="srv-title">Endpoint Security & MDM</div>
+          <p class="srv-desc">Enterprise endpoint management via Microsoft Intune, compliance policy enforcement, LAPS password rotation, ASR rules, and zero-trust access control across 500+ devices.</p>
+          <div class="srv-tools">
+            <span class="srv-tool">Microsoft Intune</span>
+            <span class="srv-tool">Entra ID</span>
+            <span class="srv-tool">LAPS</span>
+            <span class="srv-tool">CrowdStrike</span>
+          </div>
+        </div>
+
+        <div class="srv-card reveal" style="--srv-accent:#0a7fa8;--srv-bg:#eaf6fb;">
+          <div class="srv-ico">☁️</div>
+          <div class="srv-title">Cloud & Server Hardening</div>
+          <p class="srv-desc">Linux server hardening, SELinux policy enforcement, cloud security posture management via Microsoft Defender for Cloud (MDAPT), and Azure security configuration.</p>
+          <div class="srv-tools">
+            <span class="srv-tool">Defender for Cloud</span>
+            <span class="srv-tool">SELinux</span>
+            <span class="srv-tool">Linux Hardening</span>
+            <span class="srv-tool">Azure AD</span>
+          </div>
+        </div>
+
+        <div class="srv-card reveal reveal-d1" style="--srv-accent:#c47a0e;--srv-bg:#fdf6e8;">
+          <div class="srv-ico">🔬</div>
+          <div class="srv-title">Vulnerability Management</div>
+          <p class="srv-desc">Continuous vulnerability scanning, CVSS-prioritized remediation reporting, OpenVAS assessments, and validated fix procedures delivered with step-by-step guidance.</p>
+          <div class="srv-tools">
+            <span class="srv-tool">Qualys</span>
+            <span class="srv-tool">Rapid7 InsightVM</span>
+            <span class="srv-tool">Nessus Pro</span>
+            <span class="srv-tool">OpenVAS</span>
+          </div>
+        </div>
+
+        <div class="srv-card reveal reveal-d2" style="--srv-accent:#7c3aed;--srv-bg:#f5f0fe;">
+          <div class="srv-ico">🤖</div>
+          <div class="srv-title">IR Automation & Forensics</div>
+          <p class="srv-desc">Python-powered incident response automation, IOC/IOA parsing, honeypot log analysis, digital forensics, VM forensics, and NCCC compliance-aligned auditing workflows.</p>
+          <div class="srv-tools">
+            <span class="srv-tool">Python</span>
+            <span class="srv-tool">Log Analysis</span>
+            <span class="srv-tool">VM Forensics</span>
+            <span class="srv-tool">NCCC</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ACHIEVEMENTS ── -->
+  <section class="achievements" id="achievements">
+    <div class="container">
+      <div class="sec-header reveal">
+        <div class="sec-eyebrow">Key Impact</div>
+        <h2 class="sec-title">Notable Achievements</h2>
+      </div>
+      <div class="ach-grid">
+
+        <div class="ach-card reveal">
+          <div class="ach-ico" style="background:#eef2fd;">🎯</div>
+          <div>
+            <div class="ach-num">563</div>
+            <div class="ach-lbl">CCTV Cameras — Critical Exposure</div>
+            <div class="ach-desc">Discovered 563 CCTV cameras across 4 NVR systems at IISc exposed with default credentials. Delivered full PoC report with exploitation chain — all subsequently secured by campus teams.</div>
+          </div>
+        </div>
+
+        <div class="ach-card reveal reveal-d1">
+          <div class="ach-ico" style="background:#edfaf4;">⚡</div>
+          <div>
+            <div class="ach-num">40%</div>
+            <div class="ach-lbl">Incident Response Time Reduction</div>
+            <div class="ach-desc">Automated NCCC report parsing (IOCs, IOAs, honeypot logs) using Python — cutting mean response time by 40% and enabling faster threat containment at institutional scale.</div>
+          </div>
+        </div>
+
+        <div class="ach-card reveal reveal-d2">
+          <div class="ach-ico" style="background:#fdf0f0;">🛡️</div>
+          <div>
+            <div class="ach-num">100%</div>
+            <div class="ach-lbl">Vulnerability Remediation Compliance</div>
+            <div class="ach-desc">Executed VAPT on 50+ IISc websites and APIs; collaborated with dev teams to validate all fixes — achieving 100% remediation compliance across every assessed application.</div>
+          </div>
+        </div>
+
+        <div class="ach-card reveal reveal-d3">
+          <div class="ach-ico" style="background:#fdf6e8;">📋</div>
+          <div>
+            <div class="ach-num">200+</div>
+            <div class="ach-lbl">Security Policies Deployed</div>
+            <div class="ach-desc">Implemented 200+ security policies across Intune and Microsoft Entra ID — enforcing institutional compliance standards at scale across 500+ managed devices.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BUG BOUNTY ── -->
+  <section class="bounty" id="bounty">
+    <div class="container">
+      <div class="sec-header reveal">
+        <div class="sec-eyebrow">Responsible Disclosure</div>
+        <h2 class="sec-title">Bug Bounty Credits</h2>
+        <p class="sec-sub">Responsible disclosure of critical vulnerabilities to world-class organizations — demonstrating real-world offensive security impact.</p>
+      </div>
+      <div class="bounty-grid">
+
+        <div class="bounty-card reveal">
+          <span class="bounty-ico">🚀</span>
+          <div class="bounty-org">NASA</div>
+          <div class="bounty-vuln">Bulk Directory Listing</div>
+          <div class="bounty-badge"><span class="tag tag-red">CRITICAL</span></div>
+        </div>
+
+        <div class="bounty-card reveal reveal-d1">
+          <span class="bounty-ico">🎓</span>
+          <div class="bounty-org">Stanford</div>
+          <div class="bounty-vuln">AWS S3 Misconfiguration</div>
+          <div class="bounty-badge"><span class="tag tag-red">HIGH</span></div>
+        </div>
+
+        <div class="bounty-card reveal reveal-d2">
+          <span class="bounty-ico">🏛️</span>
+          <div class="bounty-org">HRYLABOUR.GOV</div>
+          <div class="bounty-vuln">Reflected XSS</div>
+          <div class="bounty-badge"><span class="tag tag-amber">MEDIUM</span></div>
+        </div>
+
+        <div class="bounty-card reveal reveal-d3">
+          <span class="bounty-ico">🌿</span>
+          <div class="bounty-org">PATANJALI</div>
+          <div class="bounty-vuln">High-Severity XSS</div>
+          <div class="bounty-badge"><span class="tag tag-amber">HIGH</span></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROJECTS ── -->
+  <section class="projects" id="projects">
+    <div class="container">
+      <div class="sec-header reveal">
+        <div class="sec-eyebrow">Open Source Tools</div>
+        <h2 class="sec-title">Security Projects</h2>
+        <p class="sec-sub">Practical security resources and tools built for the community — available at kirankumark.in/[project]</p>
+      </div>
+      <div class="proj-grid">
+
+        <div class="proj-card reveal">
+          <div class="proj-header">
+            <span class="proj-icon">🔐</span>
+            <div class="proj-title">Security Hardening Guides</div>
+            <div class="proj-sub">VAPT REMEDIATION · 6 GUIDES</div>
+          </div>
+          <div class="proj-body">
+            <p class="proj-desc">Comprehensive security hardening guides for WordPress, Node.js, React, Flutter, Linux Server, and API Security — covering OWASP Top 10, CIS Benchmarks, and VAPT remediation procedures with step-by-step fix guidance.</p>
+            <div class="proj-tags">
+              <span class="tag tag-blue">WordPress</span>
+              <span class="tag tag-green">Node.js</span>
+              <span class="tag tag-cyan">React</span>
+              <span class="tag tag-amber">Linux</span>
+              <span class="tag tag-red">API Security</span>
+            </div>
+            <a href="https://kirankumark-sec.github.io/security-hardening-guide/" target="_blank" class="proj-link">
+              🌐 View Repository →
+            </a>
+          </div>
+        </div>
+
+        <div class="proj-card reveal reveal-d1">
+          <div class="proj-header">
+            <span class="proj-icon">🌍</span>
+            <div class="proj-title">CyberShield Domain Awareness</div>
+            <div class="proj-sub">OSINT · DNS · THREAT INTEL</div>
+          </div>
+          <div class="proj-body">
+            <p class="proj-desc">Domain security awareness and analysis tool providing DNS reconnaissance, subdomain enumeration, threat intelligence correlation, and certificate transparency monitoring for proactive attack surface management.</p>
+            <div class="proj-tags">
+              <span class="tag tag-blue">OSINT</span>
+              <span class="tag tag-red">DNS Recon</span>
+              <span class="tag tag-green">Threat Intel</span>
+              <span class="tag tag-amber">Attack Surface</span>
+            </div>
+            <a href="https://kirankumark-sec.github.io/CyberShield-Domain-Awareness/" target="_blank" class="proj-link">
+              🌐 View Repository →
+            </a>
+          </div>
+        </div>
+
+        <div class="proj-card reveal">
+          <div class="proj-header">
+            <span class="proj-icon">🏢</span>
+            <div class="proj-title">Zero-Trust Endpoint Security</div>
+            <div class="proj-sub">MICROSOFT INTUNE · MDE · ZERO TRUST</div>
+          </div>
+          <div class="proj-body">
+            <p class="proj-desc">Architected and deployed Zero-Trust endpoint security framework across 500+ devices at IISc — enforced compliance policies, automated LAPS password rotation, and full Microsoft Defender for Endpoint integration.</p>
+            <div class="proj-tags">
+              <span class="tag tag-blue">Microsoft Intune</span>
+              <span class="tag tag-green">Zero Trust</span>
+              <span class="tag tag-cyan">LAPS</span>
+            </div>
+            <a href="#experience" class="proj-link">📋 Read Case Study →</a>
+          </div>
+        </div>
+
+        <div class="proj-card reveal reveal-d1">
+          <div class="proj-header">
+            <span class="proj-icon">☁️</span>
+            <div class="proj-title">Cloud Server Security Hardening</div>
+            <div class="proj-sub">MDAPT · SELinux · MSSQL</div>
+          </div>
+          <div class="proj-body">
+            <p class="proj-desc">Deployed Microsoft Defender for Cloud across all Linux servers, enforced SELinux mandatory access control policies, disabled xp_cmdshell on MSSQL — achieving comprehensive cloud security posture hardening.</p>
+            <div class="proj-tags">
+              <span class="tag tag-blue">Defender for Cloud</span>
+              <span class="tag tag-red">SELinux</span>
+              <span class="tag tag-amber">MSSQL</span>
+            </div>
+            <a href="#experience" class="proj-link">📋 Read Case Study →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── EXPERIENCE ── -->
+  <section class="experience" id="experience">
+    <div class="container">
+      <div class="sec-header reveal">
+        <div class="sec-eyebrow">Career</div>
+        <h2 class="sec-title">Work Experience</h2>
+      </div>
+      <div class="exp-timeline">
+
+        <div class="exp-item reveal">
+          <div class="exp-dot"></div>
+          <div class="exp-meta">
+            <div>
+              <div class="exp-role">Junior Security Analyst</div>
+              <div class="exp-org">Indian Institute of Science (IISc – DIGITS), Bangalore</div>
+            </div>
+            <div class="exp-date">Jul 2025 – Present</div>
+          </div>
+          <ul class="exp-bullets">
+            <li>Onboarded 500+ devices to Microsoft Intune with enforced compliance policies, LAPS rotation, and MDE integration — reducing institutional attack surface.</li>
+            <li>Implemented MDAPT across all Linux servers; enforced SELinux policies; disabled xp_cmdshell on MSSQL — preventing command execution vulnerabilities.</li>
+            <li>Executed comprehensive VAPT on 50+ IISc websites and APIs (SQLi, XSS, IDOR, auth bypass) — achieved <strong>100% remediation compliance</strong>.</li>
+            <li>Discovered 563 CCTV cameras across 4 NVR systems with default credentials; delivered full PoC and remediation — all systems subsequently secured.</li>
+            <li>Managed 50+ Defender alerts and 35+ Azure agentless alerts daily; led forensic investigations of multiple live cyberattacks.</li>
+            <li>Automated incident response workflows via Python — reducing response time by <strong>40%</strong> in alignment with NCCC directives.</li>
+            <li>Deployed Wazuh SIEM with agent-based centralized log monitoring; evaluated PacketFence NAC for campus-wide rollout.</li>
+          </ul>
+        </div>
+
+        <div class="exp-item reveal">
+          <div class="exp-dot"></div>
+          <div class="exp-meta">
+            <div>
+              <div class="exp-role">Information Security Intern</div>
+              <div class="exp-org">Indian Institute of Science (IISc), Bangalore</div>
+            </div>
+            <div class="exp-date">Mar 2025 – Jun 2025</div>
+          </div>
+          <ul class="exp-bullets">
+            <li>Performed VAPT on 5+ IISc web applications and 1 API using OpenVAS and Burp Suite — identified OWASP Top 10 vulnerabilities and API security flaws.</li>
+            <li>Delivered comprehensive PoC reports with CVSS-prioritized remediation procedures; analyzed Apache/Nginx logs for anomaly detection.</li>
+          </ul>
+        </div>
+
+        <div class="exp-item reveal">
+          <div class="exp-dot"></div>
+          <div class="exp-meta">
+            <div>
+              <div class="exp-role">Independent Bug Bounty Researcher</div>
+              <div class="exp-org">Self-Employed</div>
+            </div>
+            <div class="exp-date">Mar 2023 – Dec 2024</div>
+          </div>
+          <ul class="exp-bullets">
+            <li>Responsibly disclosed critical vulnerabilities to NASA (Bulk Directory Listing), Stanford University (AWS S3 Misconfiguration), Hrylabour.gov.in (Reflected XSS), and Patanjaliayurved.net (High-severity XSS).</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SKILLS ── -->
+  <section class="skills" id="skills">
+    <div class="container">
+      <div class="sec-header reveal">
+        <div class="sec-eyebrow">Technical Arsenal</div>
+        <h2 class="sec-title">Skills & Tools</h2>
+      </div>
+      <div class="skills-grid">
+
+        <div class="skill-group reveal">
+          <div class="sg-title"><span class="sg-ico">💻</span> Endpoint & MDM</div>
+          <div class="skill-tags">
+            <span class="sk">Microsoft Intune</span><span class="sk">Entra ID</span>
+            <span class="sk">LAPS</span><span class="sk">ASR Rules</span>
+            <span class="sk">Windows Defender</span><span class="sk">CrowdStrike</span>
+            <span class="sk">SentinelOne</span>
+          </div>
+        </div>
+
+        <div class="skill-group reveal reveal-d1">
+          <div class="sg-title"><span class="sg-ico">⚔️</span> Penetration Testing</div>
+          <div class="skill-tags">
+            <span class="sk">Burp Suite Pro</span><span class="sk">Metasploit</span>
+            <span class="sk">Nmap</span><span class="sk">SQLMap</span>
+            <span class="sk">OWASP ZAP</span><span class="sk">Kali Linux</span>
+            <span class="sk">API Pen Testing</span>
+          </div>
+        </div>
+
+        <div class="skill-group reveal reveal-d2">
+          <div class="sg-title"><span class="sg-ico">🔭</span> SOC & SIEM</div>
+          <div class="skill-tags">
+            <span class="sk">Microsoft Sentinel</span><span class="sk">Defender MDE</span>
+            <span class="sk">Wazuh SIEM</span><span class="sk">Rapid7 InsightIDR</span>
+            <span class="sk">Splunk</span><span class="sk">ELK Stack</span>
+          </div>
+        </div>
+
+        <div class="skill-group reveal reveal-d3">
+          <div class="sg-title"><span class="sg-ico">🔬</span> Vuln Management</div>
+          <div class="skill-tags">
+            <span class="sk">Qualys</span><span class="sk">Rapid7 InsightVM</span>
+            <span class="sk">Nessus Pro</span><span class="sk">OpenVAS</span>
+            <span class="sk">Asimily</span>
+          </div>
+        </div>
+
+        <div class="skill-group reveal">
+          <div class="sg-title"><span class="sg-ico">☁️</span> Cloud & Network</div>
+          <div class="skill-tags">
+            <span class="sk">Azure AD</span><span class="sk">Defender for Cloud</span>
+            <span class="sk">Zero Trust / ZTNA</span><span class="sk">PacketFence NAC</span>
+            <span class="sk">Wireshark</span><span class="sk">AWS Security</span>
+          </div>
+        </div>
+
+        <div class="skill-group reveal reveal-d1">
+          <div class="sg-title"><span class="sg-ico">🧪</span> AppSec</div>
+          <div class="skill-tags">
+            <span class="sk">Fortify SCA</span><span class="sk">Checkmarx</span>
+            <span class="sk">SAST / DAST</span><span class="sk">OWASP Top 10</span>
+            <span class="sk">API Security</span>
+          </div>
+        </div>
+
+        <div class="skill-group reveal reveal-d2">
+          <div class="sg-title"><span class="sg-ico">🖥️</span> Server Security</div>
+          <div class="skill-tags">
+            <span class="sk">Linux Hardening</span><span class="sk">SELinux</span>
+            <span class="sk">MDAPT</span><span class="sk">Secure OS Config</span>
+            <span class="sk">MSSQL Security</span>
+          </div>
+        </div>
+
+        <div class="skill-group reveal reveal-d3">
+          <div class="sg-title"><span class="sg-ico">🤖</span> Scripting & Forensics</div>
+          <div class="skill-tags">
+            <span class="sk">Python</span><span class="sk">Bash</span>
+            <span class="sk">SQL</span><span class="sk">Log Analysis</span>
+            <span class="sk">IOC/IOA Investigation</span>
+            <span class="sk">VM Forensics</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CERTIFICATIONS ── -->
+  <section class="certs" id="certs">
+    <div class="container">
+      <div class="sec-header reveal">
+        <div class="sec-eyebrow">Education & Credentials</div>
+        <h2 class="sec-title">Certifications</h2>
+      </div>
+      <div class="certs-row">
+
+        <div class="cert-card reveal">
+          <div class="cert-ico" style="background:#fdf0f0;">🛡️</div>
+          <div>
+            <div class="cert-name">Ethical Hacking Essentials</div>
+            <div class="cert-by">EC-Council</div>
+          </div>
+        </div>
+
+        <div class="cert-card reveal reveal-d1">
+          <div class="cert-ico" style="background:#eef2fd;">🔒</div>
+          <div>
+            <div class="cert-name">CompTIA Security+ (Plus)</div>
+            <div class="cert-by">Infosys SpringBoard</div>
+          </div>
+        </div>
+
+        <div class="cert-card reveal reveal-d2">
+          <div class="cert-ico" style="background:#edfaf4;">🔌</div>
+          <div>
+            <div class="cert-name">Postman API Fundamentals</div>
+            <div class="cert-by">Postman · Student Expert</div>
+          </div>
+        </div>
+
+        <div class="cert-card reveal reveal-d3">
+          <div class="cert-ico" style="background:#fdf6e8;">🎓</div>
+          <div>
+            <div class="cert-name">B.E. Computer Science</div>
+            <div class="cert-by">Alva's Institute of Engineering & Technology · 7.28 CGPA</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ── -->
+  <section class="contact" id="contact">
+    <div class="container contact-inner">
+      <div class="sec-header reveal">
+        <div class="sec-eyebrow">Get In Touch</div>
+        <h2 class="sec-title">Let's Work Together</h2>
+        <p class="sec-sub">Available for VAPT engagements, security consulting, bug bounty collaboration, and enterprise security projects.</p>
+      </div>
+      <div class="contact-cards">
+        <a href="mailto:18kirankumar.k03@gmail.com" class="contact-card reveal">
+          <span class="contact-card-ico">📧</span>
+          18kirankumar.k03@gmail.com
+        </a>
+        <a href="tel:+918310937381" class="contact-card reveal reveal-d1">
+          <span class="contact-card-ico">📱</span>
+          +91 83109 37381
+        </a>
+        <a href="https://linkedin.com/in/kiran-kumar-k3" target="_blank" class="contact-card reveal reveal-d2">
+          <span class="contact-card-ico">💼</span>
+          linkedin.com/in/kiran-kumar-k3
+        </a>
+        <a href="https://github.com/KIRAN-KUMAR-K3" target="_blank" class="contact-card reveal reveal-d3">
+          <span class="contact-card-ico">🐙</span>
+          github.com/KIRAN-KUMAR-K3
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <span class="footer-txt">
+      © <strong id="fy">2025</strong> &nbsp;·&nbsp; <strong>kirankumark.in</strong> &nbsp;·&nbsp; Kiran Kumar K &nbsp;·&nbsp; Cybersecurity Analyst &nbsp;·&nbsp; Bengaluru, India
+    </span>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('fy').textContent = new Date().getFullYear();
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => obs.observe(el));
+
+    // Smooth active nav on scroll
+    const sections = document.querySelectorAll('section[id], div[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+      let cur = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 100) cur = s.id;
+      });
+      navLinks.forEach(a => {
+        a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--ink)' : '';
+      });
+    }, { passive: true });
+  </script>
+</body>
+</html>
