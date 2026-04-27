@@ -666,8 +666,38 @@ ul{list-style:none}
 }
 .proj-link:hover{background:var(--blue);color:#fff;border-color:var(--blue);transform:translateY(-1px)}
 
+/* GitHub projects special styling */
+.proj-card.github-proj{
+  border-color:var(--blue-bd);
+  background:linear-gradient(160deg,var(--blue-lt) 0%,var(--surface) 60%);
+}
+.proj-card.github-proj .proj-link{
+  background:var(--grad-blue);color:#fff;border-color:var(--blue);
+  box-shadow:var(--sh-blue);
+}
+.proj-card.github-proj .proj-link:hover{
+  box-shadow:0 12px 36px rgba(26,80,224,.35);transform:translateY(-2px);
+}
+.proj-launch-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:'JetBrains Mono',monospace;font-size:9px;
+  letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--green);background:var(--green-lt);
+  border:1px solid rgba(22,163,74,.25);
+  padding:3px 9px;border-radius:100px;
+  margin-bottom:14px;width:fit-content;
+}
+.proj-launch-dot{
+  width:6px;height:6px;border-radius:50%;background:var(--green);
+  animation:pulse-g 2s infinite;
+}
+@keyframes pulse-g{
+  0%,100%{box-shadow:0 0 0 0 rgba(22,163,74,.4)}
+  50%{box-shadow:0 0 0 5px rgba(22,163,74,0)}
+}
+
 /* ══════════════════════════════════════════════════
-   SECURITY HARDENING (integrated from hardening/index.html concept)
+   SECURITY HARDENING
 ══════════════════════════════════════════════════ */
 .hardening-section{background:var(--bg)}
 .hardening-intro{
@@ -727,7 +757,7 @@ ul{list-style:none}
 }
 
 /* ══════════════════════════════════════════════════
-   SECURITY AWARENESS (integrated from awareness.html concept)
+   SECURITY AWARENESS
 ══════════════════════════════════════════════════ */
 .awareness-section{
   background:linear-gradient(160deg,#0a1628 0%,#112044 60%,#0e1d3c 100%);
@@ -1154,7 +1184,6 @@ footer{
 ══════════════════════════════════════════════════ -->
 <div class="marquee-wrap" aria-hidden="true">
   <div class="marquee-track" id="marqueeTrack">
-    <!-- items duplicated for seamless loop -->
     <div class="marquee-item"><b>VAPT</b><span class="msep">◆</span></div>
     <div class="marquee-item">Microsoft Sentinel<span class="msep">◆</span></div>
     <div class="marquee-item"><b>Burp Suite Pro</b><span class="msep">◆</span></div>
@@ -1536,12 +1565,50 @@ footer{
         <a href="#contact" class="proj-link">View Details →</a>
       </div>
 
+      <!-- ═══ GITHUB OPEN-SOURCE PROJECTS ═══ -->
+
+      <div class="proj-card github-proj reveal">
+        <div class="proj-num">07</div>
+        <div class="proj-launch-badge">
+          <span class="proj-launch-dot"></span> Live on GitHub
+        </div>
+        <div class="proj-ico" style="background:#eff4ff">🛡️</div>
+        <div class="proj-title">Security Hardening Guides</div>
+        <div class="proj-desc">A comprehensive interactive hub covering security hardening for Linux servers, APIs, Node.js, React, Flutter, and WordPress. Each guide provides step-by-step hardening checklists, CIS benchmark alignment, and real-world configuration examples — all in one neon-themed reference portal.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">Linux</span>
+          <span class="proj-tag">API Security</span>
+          <span class="proj-tag">Node.js</span>
+          <span class="proj-tag">WordPress</span>
+          <span class="proj-tag">CIS Benchmarks</span>
+        </div>
+        <a href="security-hardening-guide-main/index.html" class="proj-link" target="_blank" rel="noopener">🚀 Launch Project →</a>
+      </div>
+
+      <div class="proj-card github-proj reveal reveal-d1">
+        <div class="proj-num">08</div>
+        <div class="proj-launch-badge">
+          <span class="proj-launch-dot"></span> Live on GitHub
+        </div>
+        <div class="proj-ico" style="background:#fef2f2">🌐</div>
+        <div class="proj-title">CyberShield — Domain Attack Awareness</div>
+        <div class="proj-desc">An interactive domain security awareness platform covering real-world attack vectors — typosquatting, subdomain takeover, DNS hijacking, phishing lookalikes, and more. Built to raise organizational awareness with visual threat simulations and actionable defenses.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">Domain Security</span>
+          <span class="proj-tag">DNS Attacks</span>
+          <span class="proj-tag">Phishing</span>
+          <span class="proj-tag">Awareness</span>
+          <span class="proj-tag">Threat Intel</span>
+        </div>
+        <a href="CyberShield-Domain-Awareness-main/index.html" class="proj-link" target="_blank" rel="noopener">🚀 Launch Project →</a>
+      </div>
+
     </div>
   </div>
 </section>
 
 <!-- ══════════════════════════════════════════════════
-     SECURITY HARDENING (integrated from hardening/index.html)
+     SECURITY HARDENING
 ══════════════════════════════════════════════════ -->
 <section class="section hardening-section" id="hardening">
   <div class="container">
@@ -1583,7 +1650,7 @@ footer{
           <div class="harden-check-ico">🛡️</div>
           <div>
             <div class="harden-check-title">Attack Surface Reduction</div>
-            <div class="harden-check-title">ASR rules deployed across all endpoints — blocking malicious Office macros, credential theft, ransomware behaviors, and lateral movement techniques.</div>
+            <div class="harden-check-sub">ASR rules deployed across all endpoints — blocking malicious Office macros, credential theft, ransomware behaviors, and lateral movement techniques.</div>
           </div>
         </div>
       </div>
@@ -1663,7 +1730,7 @@ footer{
 </section>
 
 <!-- ══════════════════════════════════════════════════
-     SECURITY AWARENESS (integrated from awareness.html)
+     SECURITY AWARENESS
 ══════════════════════════════════════════════════ -->
 <section class="section awareness-section" id="awareness">
   <div class="container">
