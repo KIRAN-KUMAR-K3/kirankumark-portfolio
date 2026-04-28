@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Kiran Kumar K — Cybersecurity Analyst, VAPT Specialist & Security Engineer at IISc Bengaluru.">
 <title>Kiran Kumar K — Cybersecurity Analyst & VAPT Specialist</title>
+<!-- FAVICON -->
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="shortcut icon" href="images/favicon.png">
+<link rel="apple-touch-icon" href="images/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -64,6 +68,42 @@
 
   /* transition */
   --ease:.22s cubic-bezier(.4,0,.2,1);
+}
+
+/* ══════════════════════════════════════════════════
+   PRELOADER
+══════════════════════════════════════════════════ */
+#preloader{
+  position:fixed;inset:0;z-index:9999;
+  background:var(--grad-hero);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;
+  transition:opacity .6s ease, visibility .6s ease;
+}
+#preloader.hidden{opacity:0;visibility:hidden;pointer-events:none;}
+.preloader-logo{
+  width:90px;height:90px;
+  animation:preloaderPulse 1.4s ease-in-out infinite;
+}
+.preloader-logo img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 0 24px rgba(37,99,235,.6));}
+.preloader-bar-wrap{
+  width:160px;height:3px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden;
+}
+.preloader-bar{
+  height:100%;width:0%;background:var(--grad-blue);border-radius:2px;
+  animation:preloaderBar 1.6s ease forwards;
+}
+.preloader-text{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.4);
+}
+@keyframes preloaderPulse{
+  0%,100%{transform:scale(1);filter:drop-shadow(0 0 24px rgba(37,99,235,.5));}
+  50%{transform:scale(1.08);filter:drop-shadow(0 0 36px rgba(37,99,235,.9));}
+}
+@keyframes preloaderBar{
+  0%{width:0%}
+  60%{width:80%}
+  100%{width:100%}
 }
 
 /* ══════════════════════════════════════════════════
@@ -133,17 +173,18 @@ ul{list-style:none}
   letter-spacing:.5px;flex-shrink:0;
 }
 .nav-logo-badge{
-  width:34px;height:34px;border-radius:9px;
-  background:var(--grad-blue);
+  width:38px;height:38px;border-radius:9px;
+  background:transparent;
   display:flex;align-items:center;justify-content:center;
-  color:#fff;font-size:15px;font-weight:800;
   box-shadow:var(--sh-blue);
+  overflow:hidden;flex-shrink:0;
 }
+.nav-logo-badge img{width:38px;height:38px;object-fit:contain;}
 .nav-links{
-  display:flex;align-items:center;gap:clamp(18px,3vw,36px);
+  display:flex;align-items:center;gap:clamp(14px,2vw,28px);
 }
 .nav-links a{
-  font-size:13.5px;font-weight:600;color:var(--muted);
+  font-size:13px;font-weight:600;color:var(--muted);
   letter-spacing:.2px;transition:color var(--ease);
   white-space:nowrap;
 }
@@ -366,13 +407,25 @@ ul{list-style:none}
   background:rgba(255,255,255,.07);
   border:1px solid rgba(255,255,255,.14);
   border-radius:var(--r-lg);
-  padding:clamp(20px,3vw,32px);
+  overflow:hidden;
   backdrop-filter:blur(20px);
   -webkit-backdrop-filter:blur(20px);
-  min-width:clamp(240px,25vw,320px);
+  min-width:clamp(260px,28vw,360px);
   opacity:0;animation:fadeRight .9s ease .4s forwards;
   position:relative;
 }
+.hero-card-banner{
+  width:100%;overflow:hidden;
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
+.hero-card-banner img{
+  width:100%;height:clamp(100px,14vw,160px);
+  object-fit:cover;object-position:center;
+  display:block;
+  transition:transform .5s ease;
+}
+.hero-card:hover .hero-card-banner img{transform:scale(1.03);}
+.hero-card-body{padding:clamp(16px,2.5vw,24px);}
 .hero-card::before{
   content:'';position:absolute;top:0;left:16px;right:16px;height:1px;
   background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);
@@ -865,6 +918,276 @@ ul{list-style:none}
 .cert-by{font-size:11.5px;color:var(--muted);margin-top:4px}
 
 /* ══════════════════════════════════════════════════
+   FUTURE VISION — KINETIK SECURITY SOLUTIONS
+══════════════════════════════════════════════════ */
+.vision-section{
+  background:linear-gradient(160deg,#060c1a 0%,#0b1832 50%,#071020 100%);
+  position:relative;overflow:hidden;
+}
+.vision-section::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(26,80,224,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(26,80,224,.04) 1px,transparent 1px);
+  background-size:60px 60px;
+}
+/* animated glow blobs */
+.vision-glow-a{
+  position:absolute;top:-15%;right:-5%;
+  width:500px;height:500px;border-radius:50%;
+  background:radial-gradient(circle,rgba(26,80,224,.18) 0%,transparent 65%);
+  pointer-events:none;animation:visionFloat 8s ease-in-out infinite;
+}
+.vision-glow-b{
+  position:absolute;bottom:-20%;left:-8%;
+  width:400px;height:400px;border-radius:50%;
+  background:radial-gradient(circle,rgba(8,145,178,.12) 0%,transparent 65%);
+  pointer-events:none;animation:visionFloat 10s ease-in-out infinite reverse;
+}
+@keyframes visionFloat{
+  0%,100%{transform:translateY(0) scale(1);}
+  50%{transform:translateY(-30px) scale(1.05);}
+}
+
+.vision-section .sec-eyebrow{color:#7aa4ff;position:relative;z-index:1;}
+.vision-section .sec-eyebrow::before{background:#7aa4ff}
+.vision-section .sec-title{color:#fff}
+.vision-section .sec-sub{color:rgba(255,255,255,.55);max-width:600px;}
+
+/* kinetik brand strip */
+.vision-brand-strip{
+  display:flex;align-items:center;gap:14px;
+  margin-bottom:clamp(36px,6vw,56px);
+  position:relative;z-index:1;
+}
+.vision-brand-logo{
+  width:56px;height:56px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+  border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;flex-shrink:0;
+}
+.vision-brand-logo img{width:44px;height:44px;object-fit:contain;}
+.vision-brand-name{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(20px,3.5vw,30px);font-weight:700;color:#fff;letter-spacing:-0.5px;
+}
+.vision-brand-tagline{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35);
+  margin-top:2px;
+}
+.vision-brand-badge{
+  margin-left:auto;flex-shrink:0;
+  font-family:'JetBrains Mono',monospace;font-size:9px;
+  letter-spacing:1.5px;text-transform:uppercase;
+  color:#f59e0b;background:rgba(245,158,11,.1);
+  border:1px solid rgba(245,158,11,.3);
+  padding:5px 12px;border-radius:100px;
+  display:flex;align-items:center;gap:6px;
+}
+.vision-brand-badge-dot{
+  width:5px;height:5px;border-radius:50%;background:#f59e0b;
+  animation:pulse-amber 2s infinite;
+}
+@keyframes pulse-amber{
+  0%,100%{box-shadow:0 0 0 0 rgba(245,158,11,.4)}
+  50%{box-shadow:0 0 0 5px rgba(245,158,11,0)}
+}
+
+/* image gallery grid */
+.vision-gallery{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:auto auto;
+  gap:clamp(12px,2vw,18px);
+  margin-bottom:clamp(40px,6vw,60px);
+  position:relative;z-index:1;
+}
+.vision-img-card{
+  border-radius:var(--r-lg);overflow:hidden;
+  border:1px solid rgba(255,255,255,.1);
+  position:relative;
+  background:#0a1628;
+  transition:transform var(--ease),box-shadow var(--ease),border-color var(--ease);
+}
+.vision-img-card:hover{
+  transform:translateY(-6px) scale(1.01);
+  box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 0 1px rgba(37,99,235,.3);
+  border-color:rgba(37,99,235,.4);
+}
+.vision-img-card.span-2{grid-column:span 2;}
+.vision-img-card img{
+  width:100%;height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform .5s ease;
+}
+.vision-img-card:hover img{transform:scale(1.03);}
+.vision-img-overlay{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:16px 20px;
+  background:linear-gradient(to top,rgba(6,12,26,.95) 0%,transparent 100%);
+}
+.vision-img-label{
+  font-family:'JetBrains Mono',monospace;font-size:9px;
+  letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);
+  margin-bottom:4px;
+}
+.vision-img-title{font-size:13px;font-weight:700;color:#fff;}
+.vision-img-tag{
+  display:inline-flex;align-items:center;gap:5px;
+  font-family:'JetBrains Mono',monospace;font-size:8.5px;
+  letter-spacing:1px;text-transform:uppercase;
+  color:#7aa4ff;background:rgba(122,164,255,.1);
+  border:1px solid rgba(122,164,255,.2);
+  padding:2px 8px;border-radius:3px;margin-top:6px;
+}
+
+/* company showcase banner */
+.vision-company-showcase{
+  position:relative;z-index:1;
+  border-radius:var(--r-xl);overflow:hidden;
+  border:1px solid rgba(255,255,255,.12);
+  margin-bottom:clamp(24px,3vw,32px);
+  height:clamp(220px,30vw,420px);
+  background:#060c1a;
+}
+.vision-company-showcase img{
+  width:100%;height:100%;object-fit:cover;object-position:center;
+  display:block;transition:transform .6s ease;
+}
+.vision-company-showcase:hover img{transform:scale(1.02);}
+.vision-company-overlay{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:clamp(20px,3vw,32px);
+  background:linear-gradient(to top,rgba(6,12,26,.97) 0%,rgba(6,12,26,.5) 50%,transparent 100%);
+}
+.vision-company-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  font-family:'JetBrains Mono',monospace;font-size:9px;
+  letter-spacing:2px;text-transform:uppercase;
+  color:#7aa4ff;background:rgba(122,164,255,.1);
+  border:1px solid rgba(122,164,255,.25);
+  padding:3px 10px;border-radius:4px;margin-bottom:8px;
+}
+.vision-company-title{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(18px,3.5vw,32px);font-weight:700;color:#fff;
+  letter-spacing:-0.5px;margin-bottom:6px;
+}
+.vision-company-sub{
+  font-family:'JetBrains Mono',monospace;
+  font-size:clamp(9px,1.5vw,11px);color:rgba(255,255,255,.45);
+  letter-spacing:1.5px;text-transform:uppercase;
+}
+
+/* concept cards row */
+.vision-specs{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));
+  gap:clamp(12px,2vw,16px);
+  margin-bottom:clamp(40px,6vw,60px);
+  position:relative;z-index:1;
+}
+.vision-spec-card{
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);
+  border-radius:var(--r-lg);padding:clamp(20px,3vw,26px) clamp(18px,3vw,22px);
+  transition:background var(--ease),border-color var(--ease),transform var(--ease);
+}
+.vision-spec-card:hover{
+  background:rgba(255,255,255,.09);border-color:rgba(122,164,255,.3);
+  transform:translateY(-3px);
+}
+.vsc-icon{font-size:28px;margin-bottom:12px;}
+.vsc-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:8px;}
+.vsc-items{display:flex;flex-direction:column;gap:5px;}
+.vsc-item{
+  display:flex;align-items:center;gap:7px;
+  font-size:11.5px;color:rgba(255,255,255,.55);
+}
+.vsc-item::before{content:'→';color:#7aa4ff;font-size:10px;flex-shrink:0;}
+
+/* CTA collaboration box */
+.vision-cta-box{
+  position:relative;z-index:1;
+  background:rgba(26,80,224,.08);
+  border:1px solid rgba(26,80,224,.25);
+  border-radius:var(--r-xl);
+  padding:clamp(32px,5vw,52px) clamp(24px,4vw,48px);
+  text-align:center;
+  overflow:hidden;
+}
+.vision-cta-box::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 0%,rgba(26,80,224,.15) 0%,transparent 60%);
+  pointer-events:none;
+}
+.vision-cta-box::after{
+  content:'';position:absolute;top:0;left:10%;right:10%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(122,164,255,.4),transparent);
+}
+.vision-cta-eyebrow{
+  font-family:'JetBrains Mono',monospace;font-size:9.5px;
+  letter-spacing:3px;text-transform:uppercase;color:#7aa4ff;
+  margin-bottom:16px;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.vision-cta-eyebrow::before,.vision-cta-eyebrow::after{
+  content:'';flex:1;max-width:60px;height:1px;background:rgba(122,164,255,.3);
+}
+.vision-cta-title{
+  font-family:'Space Grotesk',sans-serif;
+  font-size:clamp(24px,4vw,38px);font-weight:700;color:#fff;
+  line-height:1.15;letter-spacing:-0.5px;
+  margin-bottom:14px;position:relative;z-index:1;
+}
+.vision-cta-title span{
+  background:linear-gradient(90deg,#7aa4ff,#38bdf8);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.vision-cta-desc{
+  font-size:clamp(13px,2vw,15px);color:rgba(255,255,255,.55);
+  max-width:580px;margin:0 auto 28px;line-height:1.72;
+  position:relative;z-index:1;
+}
+.vision-cta-roles{
+  display:flex;gap:8px;flex-wrap:wrap;justify-content:center;
+  margin-bottom:32px;position:relative;z-index:1;
+}
+.vision-cta-role{
+  font-family:'JetBrains Mono',monospace;font-size:9.5px;
+  letter-spacing:1.5px;text-transform:uppercase;
+  color:rgba(255,255,255,.6);background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.12);
+  padding:5px 13px;border-radius:100px;
+}
+.vision-cta-actions{
+  display:flex;gap:12px;flex-wrap:wrap;justify-content:center;
+  position:relative;z-index:1;
+}
+.btn-vision-primary{
+  display:inline-flex;align-items:center;gap:9px;
+  background:var(--grad-blue);color:#fff;
+  font-size:clamp(12px,1.8vw,14px);font-weight:800;letter-spacing:.3px;
+  padding:clamp(13px,2vw,17px) clamp(24px,3vw,36px);
+  border-radius:var(--r);
+  box-shadow:0 8px 32px rgba(26,80,224,.45);
+  transition:transform var(--ease),box-shadow var(--ease);
+}
+.btn-vision-primary:hover{transform:translateY(-2px);box-shadow:0 14px 44px rgba(26,80,224,.6);}
+.btn-vision-outline{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.06);color:rgba(255,255,255,.8);
+  font-size:clamp(12px,1.8vw,14px);font-weight:600;
+  padding:clamp(12px,2vw,16px) clamp(20px,3vw,30px);
+  border-radius:var(--r);
+  border:1.5px solid rgba(255,255,255,.16);
+  transition:background var(--ease),border-color var(--ease),transform var(--ease);
+}
+.btn-vision-outline:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.32);transform:translateY(-1px);}
+
+/* ══════════════════════════════════════════════════
    CONTACT
 ══════════════════════════════════════════════════ */
 .contact-section{
@@ -967,10 +1290,12 @@ footer{
   display:flex;align-items:center;gap:10px;flex-wrap:wrap;
 }
 .footer-badge{
-  width:30px;height:30px;background:var(--grad-blue);
-  border-radius:7px;display:flex;align-items:center;justify-content:center;
-  color:#fff;font-size:13px;font-weight:800;flex-shrink:0;
+  width:36px;height:36px;
+  border-radius:9px;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;background:transparent;
 }
+.footer-badge img{width:36px;height:36px;object-fit:contain;}
 .footer-name{
   font-family:'JetBrains Mono',monospace;
   font-size:12px;color:rgba(255,255,255,.4);
@@ -1017,11 +1342,18 @@ footer{
   .bounty-sev{margin-left:0}
   .form-row{grid-template-columns:1fr}
   .footer-inner{justify-content:center;text-align:center}
+  .vision-gallery{grid-template-columns:1fr}
+  .vision-img-card.span-2{grid-column:span 1}
+  .vision-brand-strip{flex-wrap:wrap}
+  .vision-brand-badge{margin-left:0}
+  .vision-company-showcase{height:clamp(160px,45vw,280px)}
 }
 @media(max-width:480px){
   .hero-name{letter-spacing:-1px}
   .stats-grid{grid-template-columns:1fr}
   .hero-chips{flex-direction:column;gap:20px}
+  .vision-company-showcase{height:200px}
+  .vision-company-title{font-size:16px}
 }
 
 /* TV / large screens */
@@ -1038,6 +1370,19 @@ footer{
 </head>
 <body>
 
+<!-- ══════════════════════════════════════════════════
+     PRELOADER
+══════════════════════════════════════════════════ -->
+<div id="preloader">
+  <div class="preloader-logo">
+    <img src="images/favicon.png" alt="Kiran Kumar K">
+  </div>
+  <div class="preloader-bar-wrap">
+    <div class="preloader-bar"></div>
+  </div>
+  <div class="preloader-text">Initializing Security Portal...</div>
+</div>
+
 <!-- SCROLL PROGRESS -->
 <div id="spb"></div>
 
@@ -1045,7 +1390,7 @@ footer{
 <nav class="nav" id="mainNav">
   <div class="nav-inner">
     <div class="nav-logo">
-      <div class="nav-logo-badge">K</div>
+      <div class="nav-logo-badge"><img src="k.png" alt="Kinetik K"></div>
       Kiran Kumar K
     </div>
     <ul class="nav-links" id="navLinks">
@@ -1056,6 +1401,7 @@ footer{
       <li><a href="#hardening">Hardening</a></li>
       <li><a href="#awareness">Awareness</a></li>
       <li><a href="#bounty">Bug Bounty</a></li>
+      <li><a href="#vision" style="color:var(--blue);font-weight:700">🚀 KINETIK</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <a href="mailto:kirankumark.sec@gmail.com" class="nav-cta" id="navCta">🔐 Hire Me</a>
@@ -1074,6 +1420,7 @@ footer{
   <a href="#hardening" onclick="closeDrawer()">Security Hardening</a>
   <a href="#awareness" onclick="closeDrawer()">Security Awareness</a>
   <a href="#bounty" onclick="closeDrawer()">Bug Bounty</a>
+  <a href="#vision" onclick="closeDrawer()" style="color:var(--blue);font-weight:700">🚀 Future Vision — KINETIK</a>
   <a href="#contact" onclick="closeDrawer()">Contact</a>
 </div>
 
@@ -1140,6 +1487,11 @@ footer{
 
       <!-- identity card -->
       <div class="hero-card">
+        <!-- Professional Banner -->
+        <div class="hero-card-banner">
+          <img src="kkk.png" alt="Kiran Kumar K — Cybersecurity Analyst & VAPT Specialist" loading="eager">
+        </div>
+        <div class="hero-card-body">
         <div class="hero-card-label">// analyst.profile</div>
         <div class="hc-row">
           <div class="hc-icon">🏛️</div>
@@ -1172,6 +1524,7 @@ footer{
         <div class="hc-divider"></div>
         <div class="hc-badge">
           <span>●</span> Active · Junior Security Analyst
+        </div>
         </div>
       </div>
     </div>
@@ -1907,6 +2260,148 @@ footer{
 </section>
 
 <!-- ══════════════════════════════════════════════════
+     FUTURE VISION — KINETIK SECURITY SOLUTIONS
+══════════════════════════════════════════════════ -->
+<section class="section vision-section" id="vision">
+  <div class="vision-glow-a"></div>
+  <div class="vision-glow-b"></div>
+  <div class="container" style="position:relative;z-index:1;">
+
+    <div class="sec-header reveal">
+      <div class="sec-eyebrow">Future Vision</div>
+      <h2 class="sec-title">KINETIK Security Solutions</h2>
+      <p class="sec-sub">Beyond the screen — a vision for bringing cybersecurity expertise into the physical world through intelligent patrol systems, advanced surveillance, and integrated security infrastructure.</p>
+    </div>
+
+    <!-- Brand strip -->
+    <div class="vision-brand-strip reveal">
+      <div class="vision-brand-logo">
+        <img src="k.png" alt="KINETIK Logo">
+      </div>
+      <div>
+        <div class="vision-brand-name">KINETIK</div>
+        <div class="vision-brand-tagline">Cyber-Physical Security · IISc Bengaluru</div>
+      </div>
+      <div class="vision-brand-badge">
+        <span class="vision-brand-badge-dot"></span>
+        Concept Stage
+      </div>
+    </div>
+
+    <!-- Company Showcase Banner -->
+    <div class="vision-company-showcase reveal">
+      <img src="k-company.png" alt="KINETIK Security Solutions — Company Vision" loading="lazy">
+      <div class="vision-company-overlay">
+        <div class="vision-company-badge">🏢 Company Vision</div>
+        <div class="vision-company-title">KINETIK Security Solutions</div>
+        <div class="vision-company-sub">Integrated Cyber-Physical Security Infrastructure · Bengaluru, India</div>
+      </div>
+    </div>
+
+    <!-- Image Gallery: Car (span-2), Bike, Security Products -->
+    <div class="vision-gallery reveal">
+      <!-- Patrol Car — main feature, full width -->
+      <div class="vision-img-card span-2" style="height:clamp(240px,35vw,440px);">
+        <img src="car.png" alt="KINETIK ADV-C Advanced Patrol Car" loading="lazy">
+        <div class="vision-img-overlay">
+          <div class="vision-img-label">Flagship Concept</div>
+          <div class="vision-img-title">KINETIK ADV-C — Advanced Patrol Vehicle</div>
+          <span class="vision-img-tag">🚗 Cyber-Physical · IISc Campus Deployment</span>
+        </div>
+      </div>
+
+      <!-- Patrol Bike -->
+      <div class="vision-img-card" style="height:clamp(180px,22vw,300px);">
+        <img src="k-bike.png" alt="KINETIK ADV-P Advanced Patrol Bike" loading="lazy">
+        <div class="vision-img-overlay">
+          <div class="vision-img-label">Rapid Response</div>
+          <div class="vision-img-title">KINETIK ADV-P — Patrol Bike</div>
+          <span class="vision-img-tag">🏍️ Agile Patrol Unit</span>
+        </div>
+      </div>
+
+      <!-- Security Products -->
+      <div class="vision-img-card" style="height:clamp(180px,22vw,300px);">
+        <img src="k-security-solutions.png" alt="KINETIK Security Products" loading="lazy">
+        <div class="vision-img-overlay">
+          <div class="vision-img-label">Product Suite</div>
+          <div class="vision-img-title">Surveillance, Access Control & Tactical Gear</div>
+          <span class="vision-img-tag">🔐 Full Security Ecosystem</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Spec cards -->
+    <div class="vision-specs">
+      <div class="vision-spec-card reveal">
+        <div class="vsc-icon">🚗</div>
+        <div class="vsc-title">ADV-C Patrol Vehicle</div>
+        <div class="vsc-items">
+          <div class="vsc-item">Real-time threat monitoring dashboard</div>
+          <div class="vsc-item">Integrated KINETIK surveillance mesh</div>
+          <div class="vsc-item">Patrol Mode AI — anomaly detection</div>
+          <div class="vsc-item">Encrypted comms & incident logging</div>
+        </div>
+      </div>
+      <div class="vision-spec-card reveal reveal-d1">
+        <div class="vsc-icon">🏍️</div>
+        <div class="vsc-title">ADV-P Rapid Response</div>
+        <div class="vsc-items">
+          <div class="vsc-item">Agile campus perimeter coverage</div>
+          <div class="vsc-item">Lightweight tactical hardcases</div>
+          <div class="vsc-item">GPS tracking & fleet coordination</div>
+          <div class="vsc-item">Quick-deploy security kit onboard</div>
+        </div>
+      </div>
+      <div class="vision-spec-card reveal reveal-d2">
+        <div class="vsc-icon">📷</div>
+        <div class="vsc-title">AI Surveillance Network</div>
+        <div class="vsc-items">
+          <div class="vsc-item">Predictive analytics & facial detection</div>
+          <div class="vsc-item">Biometric access control terminals</div>
+          <div class="vsc-item">Autonomous perimeter drone patrol</div>
+          <div class="vsc-item">Zero-trust network integration</div>
+        </div>
+      </div>
+      <div class="vision-spec-card reveal reveal-d3">
+        <div class="vsc-icon">🛰️</div>
+        <div class="vsc-title">Command & Control</div>
+        <div class="vsc-items">
+          <div class="vsc-item">Centralized SOC-style dashboard</div>
+          <div class="vsc-item">Multi-site fleet coordination</div>
+          <div class="vsc-item">NCCC-aligned incident workflows</div>
+          <div class="vsc-item">AI-powered threat correlation engine</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Collaboration CTA -->
+    <div class="vision-cta-box reveal">
+      <div class="vision-cta-eyebrow">Join the Vision</div>
+      <div class="vision-cta-title">
+        Help Build the Future of<br><span>Cyber-Physical Security</span>
+      </div>
+      <p class="vision-cta-desc">
+        KINETIK is a concept born from real-world security experience at IISc — where physical infrastructure vulnerabilities and digital threats collide. I'm looking for passionate collaborators to help turn this vision into reality.
+      </p>
+      <div class="vision-cta-roles">
+        <span class="vision-cta-role">🔐 Cybersecurity Researchers</span>
+        <span class="vision-cta-role">🚗 Automotive Engineers</span>
+        <span class="vision-cta-role">🤖 AI / ML Developers</span>
+        <span class="vision-cta-role">📷 Hardware Architects</span>
+        <span class="vision-cta-role">💼 Investors & Partners</span>
+        <span class="vision-cta-role">🏛️ Institution Liaisons</span>
+      </div>
+      <div class="vision-cta-actions">
+        <a href="#contact" class="btn-vision-primary">🤝 Collaborate on KINETIK</a>
+        <a href="mailto:kirankumark.sec@gmail.com?subject=KINETIK Collaboration Inquiry" class="btn-vision-outline">📧 Send a Partnership Proposal</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════
      CONTACT
 ══════════════════════════════════════════════════ -->
 <section class="section contact-section" id="contact">
@@ -1984,7 +2479,7 @@ footer{
 <footer>
   <div class="footer-inner">
     <div class="footer-left">
-      <div class="footer-badge">K</div>
+      <div class="footer-badge"><img src="k.png" alt="Kinetik K"></div>
       <div class="footer-name">
         <b>Kiran Kumar K</b> &nbsp;·&nbsp; Cybersecurity Analyst &nbsp;·&nbsp; Bengaluru, India
       </div>
@@ -1997,6 +2492,18 @@ footer{
      SCRIPTS
 ══════════════════════════════════════════════════ -->
 <script>
+/* ─── PRELOADER ─── */
+window.addEventListener('load', function(){
+  setTimeout(function(){
+    const pl = document.getElementById('preloader');
+    pl.classList.add('hidden');
+    // re-enable scroll
+    document.body.style.overflow = '';
+  }, 1800);
+});
+// prevent scroll during preload
+document.body.style.overflow = 'hidden';
+
 /* ─── SCROLL PROGRESS ─── */
 const spb = document.getElementById('spb');
 function updateSpb(){
