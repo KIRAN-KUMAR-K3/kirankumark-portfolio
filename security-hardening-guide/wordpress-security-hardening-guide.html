@@ -449,6 +449,7 @@
   <div class="nav-section-label">Authentication</div>
   <a class="nav-item" onclick="jumpTo('s05')"><span class="nav-num">05</span> Strong Password Policy</a>
   <a class="nav-item" onclick="jumpTo('s06')"><span class="nav-num">06</span> User Enumeration (REST API)</a>
+  <a class="nav-item" onclick="jumpTo('s16')"><span class="nav-num">16</span> Restrict REST API Access</a>
 
   <div class="nav-section-label">WordPress Core</div>
   <a class="nav-item" onclick="jumpTo('s07')"><span class="nav-num">07</span> Version Disclosure</a>
@@ -467,7 +468,7 @@
 
   <div class="sidebar-footer">
     v2025.3 · OWASP Top 10 · WP 6.x<br>
-    Last updated: May 2026
+    Last updated: Aug 2026
   </div>
 </nav>
 
@@ -485,7 +486,7 @@
     <h1>WordPress Security<br>Hardening Guide</h1>
     <p class="hero-sub">A complete, copy-paste-ready security baseline for WordPress on self-hosted Linux servers. Every control maps to VAPT findings and includes audit-proof closure statements, verification steps, and severity tags.</p>
     <div class="hero-stats">
-      <div class="stat-item"><span class="stat-num">15</span><div class="stat-label">Security Controls</div></div>
+      <div class="stat-item"><span class="stat-num">16</span><div class="stat-label">Security Controls</div></div>
       <div class="stat-item"><span class="stat-num">50+</span><div class="stat-label">Config Snippets</div></div>
       <div class="stat-item"><span class="stat-num">4</span><div class="stat-label">Server Targets</div></div>
       <div class="stat-item"><span class="stat-num">100%</span><div class="stat-label">Free Tools</div></div>
@@ -511,6 +512,7 @@
       <div class="cs-item"><span class="cs-sev cs-m">MEDIUM</span><div><strong>09 – Directory Listing Disabled</strong> — Options -Indexes / autoindex off on all WordPress directories.</div></div>
       <div class="cs-item"><span class="cs-sev cs-m">MEDIUM</span><div><strong>13 – Logging &amp; Monitoring</strong> — Nginx enhanced format, auditd on critical files, WP Activity Log, 90-day retention.</div></div>
       <div class="cs-item"><span class="cs-sev cs-m">MEDIUM</span><div><strong>14 – Backup Security</strong> — GPG-encrypted, outside web root, 600 permissions, 30-day retention, cron-scheduled.</div></div>
+      <div class="cs-item"><span class="cs-sev cs-m">MEDIUM</span><div><strong>16 – Restrict REST API Access</strong> — mu-plugin blocks wp-json, oEmbed &amp; wp/v2 content for unauthenticated requests (covers ?rest_route= too).</div></div>
     </div>
   </div>
 
@@ -2273,6 +2275,164 @@ $ php -r "echo ini_get('open_basedir');"
   </div>
 </div>
 
+<!-- ════════ SECTION 16 ════════ -->
+<div class="section" id="s16" data-severity="medium" data-tags="rest api wp-json rest_route oembed posts pages mu-plugin unauthenticated authentication 401 endpoint disclosure">
+  <div class="section-header" onclick="toggleSection('s16')">
+    <div class="section-num">16</div>
+    <div class="section-title-group">
+      <div class="section-title">Restrict WordPress REST API for Unauthenticated Users</div>
+      <div class="section-meta">
+        <span class="badge badge-medium">MEDIUM</span>
+        <span class="badge" style="background:rgba(0,255,136,0.08);color:var(--green)">WordPress (mu-plugin)</span>
+        <span class="tag-pill">wp-json</span><span class="tag-pill">rest_route</span><span class="tag-pill">mu-plugins</span>
+      </div>
+    </div>
+    <div class="chevron">⌄</div>
+  </div>
+  <div class="section-body">
+    <div class="field-grid">
+      <div class="field"><div class="field-label"><span>⚠️</span> Issue</div><div class="field-value">WordPress exposes its REST API to unauthenticated visitors by default. Endpoints such as <code>/wp-json/</code> (route discovery), <code>/wp-json/oembed/1.0/embed</code>, <code>/wp-json/wp/v2/posts</code>, and <code>/wp-json/wp/v2/pages</code> return full structured JSON data with no authentication required — and the same data remains reachable through the query-string alternative <code>/?rest_route=/</code> even where pretty-permalink-based blocking rules are already in place.</div></div>
+      <div class="field"><div class="field-label"><span>🔥</span> Risk</div><div class="field-value"><div class="risk-box risk-medium">Bulk content scraping and structured data harvesting, indirect author/user ID enumeration via the "author" field on posts, and reconnaissance of registered routes/plugins via the API index — all without valid credentials.</div></div></div>
+      <div class="field-full">
+        <div class="field-label"><span>📁</span> Files &amp; Paths</div>
+        <div class="field-value">
+          <span class="tag-pill">/var/www/html/wp-content/mu-plugins/</span>
+          <span class="tag-pill">/var/www/html/wp-content/mu-plugins/restrict-rest-api.php</span>
+        </div>
+      </div>
+      <div class="field-full">
+        <div class="field-label"><span>🔧</span> Fix — Create the must-use plugin</div>
+        <div class="field-value">
+          <div class="code-wrap">
+            <div class="code-filename">Shell — create the mu-plugins directory (WordPress doesn't create it by default)</div>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            <pre><span class="cmt"># mu-plugins load automatically on every request — no activation needed</span>
+$ mkdir -p /var/www/html/wp-content/mu-plugins</pre>
+          </div>
+          <div class="code-wrap" style="margin-top:12px">
+            <div class="code-filename">/var/www/html/wp-content/mu-plugins/restrict-rest-api.php</div>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            <pre><span class="tag">&lt;?php</span>
+<span class="cmt">/**
+ * Restrict WordPress REST API for unauthenticated users.
+ */</span>
+<span class="fn">add_filter</span>( <span class="str">'rest_authentication_errors'</span>, <span class="kw">function</span>( $result ) {
+    <span class="cmt">// Preserve any existing authentication error.</span>
+    <span class="kw">if</span> ( ! <span class="fn">empty</span>( $result ) ) {
+        <span class="kw">return</span> $result;
+    }
+    <span class="cmt">// Allow authenticated WordPress users.</span>
+    <span class="kw">if</span> ( <span class="fn">is_user_logged_in</span>() ) {
+        <span class="kw">return</span> $result;
+    }
+    <span class="cmt">// Block unauthenticated REST API requests.</span>
+    <span class="kw">return</span> <span class="kw">new</span> WP_Error(
+        <span class="str">'rest_api_restricted'</span>,
+        <span class="str">'REST API access is restricted.'</span>,
+        <span class="fn">array</span>( <span class="str">'status'</span> => <span class="num">401</span> )
+    );
+} );</pre>
+          </div>
+          <p class="note">⚠️ This single filter covers every REST route uniformly — <code>rest_authentication_errors</code> fires before any endpoint runs, so <code>/wp-json/</code>, <code>/wp-json/oembed/1.0/embed</code>, <code>/wp-json/wp/v2/posts</code>, <code>/wp-json/wp/v2/pages</code>, and the <code>/?rest_route=/</code> query-string form are all blocked by the same rule — there's no path list to keep in sync.</p>
+        </div>
+      </div>
+      <div class="field-full">
+        <div class="field-label"><span>🧩</span> Compatibility — check before deploying</div>
+        <div class="field-value">
+          <p>This blocks <strong>all</strong> unauthenticated REST access, not only the five paths listed above — so it's worth confirming the site doesn't depend on public REST access before deploying. A few common integrations do: WooCommerce Cart &amp; Checkout blocks (Store API, guest checkout), a headless/decoupled frontend reading <code>wp/v2</code> content anonymously, oEmbed auto-discovery when other sites embed your posts, and some booking/form/newsletter plugins with public REST endpoints.</p>
+          <p style="margin-top:10px">If any of those apply, use the allowlist variant below instead of the plain version — it blocks everything except the routes you name:</p>
+          <div class="code-wrap" style="margin-top:8px">
+            <div class="code-filename">Optional variant — /wp-content/mu-plugins/restrict-rest-api.php (with allowlist)</div>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            <pre><span class="tag">&lt;?php</span>
+<span class="cmt">/**
+ * Restrict WordPress REST API for unauthenticated users,
+ * with an allowlist for routes that must stay public
+ * (e.g. WooCommerce Cart &amp; Checkout blocks).
+ */</span>
+<span class="fn">add_filter</span>( <span class="str">'rest_authentication_errors'</span>, <span class="kw">function</span>( $result ) {
+    <span class="kw">if</span> ( ! <span class="fn">empty</span>( $result ) ) {
+        <span class="kw">return</span> $result;
+    }
+    <span class="kw">if</span> ( <span class="fn">is_user_logged_in</span>() ) {
+        <span class="kw">return</span> $result;
+    }
+
+    <span class="cmt">// Routes that must remain public even when logged out.</span>
+    $allowed_routes = <span class="fn">array</span>(
+        <span class="str">'/wc/store/'</span>,   <span class="cmt">// WooCommerce Cart &amp; Checkout blocks</span>
+    );
+
+    $route = $GLOBALS[<span class="str">'wp'</span>]->query_vars[<span class="str">'rest_route'</span>] ?? <span class="str">''</span>;
+
+    <span class="kw">foreach</span> ( $allowed_routes <span class="kw">as</span> $allowed ) {
+        <span class="kw">if</span> ( <span class="fn">strpos</span>( $route, $allowed ) !== <span class="kw">false</span> ) {
+            <span class="kw">return</span> $result;
+        }
+    }
+
+    <span class="kw">return</span> <span class="kw">new</span> WP_Error(
+        <span class="str">'rest_api_restricted'</span>,
+        <span class="str">'REST API access is restricted.'</span>,
+        <span class="fn">array</span>( <span class="str">'status'</span> => <span class="num">401</span> )
+    );
+} );</pre>
+          </div>
+        </div>
+      </div>
+      <div class="field-full">
+        <div class="field-label"><span>🔒</span> Lock down the file itself</div>
+        <div class="field-value">
+          <div class="code-wrap">
+            <div class="code-filename">Shell — prevent the mu-plugin from being overwritten if the site is later compromised</div>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            <pre><span class="cmt"># Owned by root, read-only to the web server user — a favorite persistence
+# spot for attackers is overwriting a trusted mu-plugin, so keep it non-writable
+# by the www-data process.</span>
+$ chown root:www-data /var/www/html/wp-content/mu-plugins/restrict-rest-api.php
+$ chmod 640 /var/www/html/wp-content/mu-plugins/restrict-rest-api.php</pre>
+          </div>
+        </div>
+      </div>
+      <div class="field"><div class="field-label"><span>👥</span> Responsible</div><div class="field-value"><span class="role-badge role-wpdev">WordPress Developer</span> <span class="role-badge role-sysadmin">Linux/System Admin</span></div></div>
+      <div class="field"><div class="field-label"><span>🔄</span> Restart</div><div class="field-value">Not required — mu-plugins load automatically on the next request.<br><span style="color:var(--text3);font-size:12px">If <code>opcache.validate_timestamps=0</code> in production:</span><div class="restart-pill" style="margin-top:6px">⟳ <code>systemctl restart php8.2-fpm</code></div></div></div>
+      <div class="field-full">
+        <div class="field-label"><span>✅</span> Verification</div>
+        <div class="verify-block">
+# Root discovery endpoint
+$ curl -I https://your-site.com/wp-json/
+→ HTTP/2 401
+
+# oEmbed endpoint
+$ curl -I "https://your-site.com/wp-json/oembed/1.0/embed?url=https://your-site.com/"
+→ HTTP/2 401
+
+# Posts and Pages collections
+$ curl -I https://your-site.com/wp-json/wp/v2/posts
+→ HTTP/2 401
+$ curl -I https://your-site.com/wp-json/wp/v2/pages
+→ HTTP/2 401
+
+# Query-string route — must ALSO be blocked (the common bypass)
+$ curl -I "https://your-site.com/?rest_route=/wp/v2/posts"
+→ HTTP/2 401
+
+# Confirm the JSON error body
+$ curl -s https://your-site.com/wp-json/wp/v2/posts | python3 -m json.tool
+→ {"code":"rest_api_restricted","message":"REST API access is restricted.","data":{"status":401}}
+
+# Authenticated requests must still succeed (nothing broke for logged-in use)
+$ curl -I -u admin:xxxx-xxxx-xxxx-xxxx https://your-site.com/wp-json/wp/v2/posts
+→ HTTP/2 200</div>
+      </div>
+      <div class="field-full">
+        <div class="field-label"><span>📋</span> VAPT Closure Statement</div>
+        <div class="vapt-closure"><div class="vapt-icon">🔒</div><div class="vapt-text"><div class="vapt-label">Audit Closure</div>WordPress REST API access has been restricted for unauthenticated users via a must-use plugin hooked into <em>rest_authentication_errors</em>, returning HTTP 401 for anonymous REST requests while preserving full functionality for authenticated sessions. Because the control gates on authentication state rather than matching individual URL paths, it uniformly covers the route discovery index (<em>/wp-json/</em>), the oEmbed endpoint, the <em>wp/v2/posts</em> and <em>wp/v2/pages</em> collections, and the query-string access route (<em>/?rest_route=/</em>), closing the pretty-permalink bypass that path-only server rules would otherwise miss. The mu-plugin file is owned by root with group-read permissions only, preventing modification by the web server process. Verification confirms all listed endpoints return HTTP 401 for anonymous requests while remaining fully accessible to authenticated users.</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ════════ MASTER SUMMARY TABLE ════════ -->
 <div style="margin-top:48px;background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;">
   <div style="padding:24px 28px;background:var(--card2);border-bottom:1px solid var(--border)">
@@ -2308,14 +2468,15 @@ $ php -r "echo ini_get('open_basedir');"
         <tr><td>13</td><td>Logging &amp; Monitoring (auditd + WP Activity Log)</td><td><span class="badge badge-medium">MEDIUM</span></td><td>Server + Plugin</td><td><span class="role-badge role-sysadmin">Sys Admin</span></td><td>A09:2021</td><td>☐ Open</td></tr>
         <tr><td>14</td><td>Backup Security (Encrypted + Offsite)</td><td><span class="badge badge-medium">MEDIUM</span></td><td>Server + Plugin</td><td><span class="role-badge role-sysadmin">Sys Admin</span></td><td>A05:2021</td><td>☐ Open</td></tr>
         <tr style="border-top:2px solid var(--cyan)"><td>15</td><td>wp-includes &amp; Uploads PHP Lockdown + PHP-FPM Hardening ★</td><td><span class="badge badge-critical">CRITICAL</span></td><td>Server + PHP</td><td><span class="role-badge role-sysadmin">Sys Admin</span> <span class="role-badge role-webadmin">Web Admin</span></td><td>A03:2021</td><td>☐ Open</td></tr>
+        <tr style="border-top:2px solid var(--cyan)"><td>16</td><td>Restrict REST API for Unauthenticated Users ★</td><td><span class="badge badge-medium">MEDIUM</span></td><td>WordPress</td><td><span class="role-badge role-wpdev">WP Dev</span> <span class="role-badge role-sysadmin">Sys Admin</span></td><td>A01:2021</td><td>☐ Open</td></tr>
       </tbody>
     </table>
   </div>
   <div style="padding:20px 28px;border-top:1px solid var(--border);display:flex;gap:24px;flex-wrap:wrap">
     <div style="display:flex;align-items:center;gap:8px"><span style="width:12px;height:12px;background:var(--red);border-radius:3px;display:inline-block"></span><span style="font-size:12px;color:var(--text2)">Critical: 5 controls</span></div>
     <div style="display:flex;align-items:center;gap:8px"><span style="width:12px;height:12px;background:var(--amber);border-radius:3px;display:inline-block"></span><span style="font-size:12px;color:var(--text2)">High: 5 controls</span></div>
-    <div style="display:flex;align-items:center;gap:8px"><span style="width:12px;height:12px;background:var(--purple);border-radius:3px;display:inline-block"></span><span style="font-size:12px;color:var(--text2)">Medium: 5 controls</span></div>
-    <div style="margin-left:auto;font-size:12px;color:var(--text3)">15 Controls Total · v2025.3 · May 2026 · OWASP WordPress Security Guide</div>
+    <div style="display:flex;align-items:center;gap:8px"><span style="width:12px;height:12px;background:var(--purple);border-radius:3px;display:inline-block"></span><span style="font-size:12px;color:var(--text2)">Medium: 6 controls</span></div>
+    <div style="margin-left:auto;font-size:12px;color:var(--text3)">16 Controls Total · v2025.3 · Aug 2026 · OWASP WordPress Security Guide</div>
   </div>
 </div>
 
