@@ -3,40 +3,68 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kiran Kumar K | Security Analyst — Enterprise Security &amp; Cloud Security Leadership</title>
-<meta name="description" content="Kiran Kumar K is a Security Analyst at the Indian Institute of Science (IISc), Bengaluru, specializing in enterprise security operations, vulnerability management, cloud security, and security program leadership.">
+<title>Kiran Kumar K | Security Analyst — VAPT, SOC &amp; Microsoft Security | IISc Bengaluru</title>
+<meta name="description" content="Kiran Kumar K is a Security Analyst at IISc Bengaluru specialising in VAPT, SOC monitoring and threat hunting, Microsoft Defender, Intune and Entra ID, Azure cloud security and security program leadership.">
+<meta name="keywords" content="Security Analyst, SOC Analyst, Threat Hunter, Cybersecurity Engineer, VAPT, Penetration Testing, Vulnerability Management, Microsoft Defender, Microsoft Intune, Microsoft Entra ID, Microsoft Sentinel, Azure Security, Incident Response, Enterprise Security, IISc Bengaluru, Shellcraft">
+<meta name="author" content="Kiran Kumar K">
+<meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#0B1220">
 <meta name="color-scheme" content="dark">
 
-<!-- Open Graph -->
+<!-- Open Graph / social preview -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="Kiran Kumar K | Security Analyst">
-<meta property="og:description" content="Enterprise security operations, vulnerability management, cloud security and security program leadership at IISc Bengaluru.">
+<meta property="og:site_name" content="Kiran Kumar K — Security Analyst">
+<meta property="og:title" content="Kiran Kumar K | Security Analyst — VAPT, SOC &amp; Microsoft Security">
+<meta property="og:description" content="Enterprise security operations, VAPT, threat hunting, Microsoft Defender / Intune / Entra ID and Azure cloud security at IISc Bengaluru. Creator of Shellcraft, a browser-based security toolkit.">
+<meta property="og:locale" content="en_IN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kiran Kumar K | Security Analyst — VAPT, SOC &amp; Microsoft Security">
+<meta name="twitter:description" content="Enterprise security operations, VAPT, threat hunting, Microsoft Defender / Intune / Entra ID and Azure cloud security at IISc Bengaluru.">
 
 <!-- favicon-3: uses the project logo -->
 <link rel="icon" type="image/png" href="images/favicon-3.png">
+<link rel="apple-touch-icon" href="images/favicon-3.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
 
-<!-- Person structured data (SEO) -->
+<!-- Structured data (SEO): Person + featured software project -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Kiran Kumar K",
-  "jobTitle": "Security Analyst",
-  "worksFor": {
-    "@type": "CollegeOrUniversity",
-    "name": "Indian Institute of Science (IISc), Bengaluru"
-  },
-  "url": "",
-  "sameAs": [
-    "https://linkedin.com/in/kiran-kumar-k3",
-    "https://github.com/KIRAN-KUMAR-K3"
-  ],
-  "knowsAbout": ["Vulnerability Management", "Cloud Security", "Security Operations", "Endpoint Security", "Security Program Management", "Digital Forensics", "Malware Analysis", "Mobile Application Security", "Network Segmentation", "Penetration Testing", "SIEM", "Zero Trust Architecture", "Threat Hunting"]
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "#person",
+      "name": "Kiran Kumar K",
+      "jobTitle": "Security Analyst",
+      "description": "Security Analyst at the Indian Institute of Science (IISc), Bengaluru, specialising in vulnerability assessment and penetration testing, SOC monitoring and threat hunting, Microsoft security platforms, Azure cloud security and security program leadership.",
+      "worksFor": {
+        "@type": "CollegeOrUniversity",
+        "name": "Indian Institute of Science (IISc), Bengaluru"
+      },
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Alva's Institute of Engineering & Technology, Mangaluru"
+      },
+      "sameAs": [
+        "https://linkedin.com/in/kiran-kumar-k3",
+        "https://github.com/KIRAN-KUMAR-K3"
+      ],
+      "knowsAbout": ["Vulnerability Management", "Vulnerability Assessment and Penetration Testing (VAPT)", "Cloud Security", "Security Operations (SOC)", "Threat Hunting", "Incident Response", "Endpoint Security", "Microsoft Defender", "Microsoft Intune", "Microsoft Entra ID", "Microsoft Sentinel", "Azure Security", "Security Program Management", "Digital Forensics", "Malware Analysis", "Mobile Application Security", "Network Segmentation", "Penetration Testing", "SIEM", "Zero Trust Architecture", "Security Automation"]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Shellcraft",
+      "applicationCategory": "SecurityApplication",
+      "operatingSystem": "Any (web browser)",
+      "url": "Shellcraft/index.html",
+      "description": "An advanced, browser-based cybersecurity toolkit for security testing, automation, reconnaissance and security research — a sandboxed Linux terminal, a 117-command reference and guided analyst challenges.",
+      "author": { "@id": "#person" },
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+  ]
 }
 </script>
 
@@ -131,6 +159,11 @@ button{font:inherit;cursor:pointer;border:none;background:none;color:inherit}
 ul,ol{list-style:none}
 input,textarea{font:inherit;color:inherit}
 h1,h2,h3,h4{font-weight:600;color:var(--ink);line-height:1.15;letter-spacing:-.01em}
+h1,h2{text-wrap:balance}
+
+/* Anchor navigation lands below the fixed nav, not underneath it */
+main section[id]{scroll-margin-top:calc(var(--nav-h) + 16px)}
+[id].project-card{scroll-margin-top:calc(var(--nav-h) + 36px)} /* extra 18px absorbs the reveal slide-in */
 
 /* Respect reduced-motion preference throughout */
 @media (prefers-reduced-motion: reduce){
@@ -419,8 +452,26 @@ h1.hero-name{
   font-size:var(--fs-base);color:var(--text-muted);
   margin-top:var(--sp-4);max-width:58ch;
 }
+.hero-focus{display:flex;flex-wrap:wrap;gap:8px;margin-top:var(--sp-5);max-width:58ch}
 .hero-actions{margin-top:var(--sp-8)}
 .hero-actions .btn-row{margin-bottom:var(--sp-4)}
+
+/* Featured-project announcement chip — the first thing the eye lands on */
+.hero-featured{
+  display:inline-flex;align-items:center;gap:10px;
+  margin-bottom:var(--sp-5);padding:6px 14px 6px 6px;
+  border-radius:var(--radius-full);
+  border:1px solid var(--accent-soft-strong);background:var(--accent-soft);
+  font-size:var(--fs-xs);color:var(--text-secondary);line-height:1.35;
+  transition:border-color var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out),transform var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out);
+}
+.hero-featured:hover{border-color:var(--accent-light);background:var(--accent-soft-strong);color:var(--ink);transform:translateY(-1px)}
+.hero-featured-tag{
+  font-family:var(--font-mono);font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  color:#fff;background:var(--accent);padding:4px 9px;border-radius:var(--radius-full);flex-shrink:0;
+}
+.hero-featured .icon{width:14px;height:14px;color:var(--accent-light);transition:transform var(--dur-fast) var(--ease-out)}
+.hero-featured:hover .icon{transform:translateX(3px)}
 
 .hero-aside{display:flex;flex-direction:column;gap:var(--sp-6)}
 .headshot{
@@ -496,16 +547,18 @@ h1.hero-name{
   from{opacity:0;transform:translateY(18px)}
   to{opacity:1;transform:translateY(0)}
 }
-.hero-context,.hero-name,.hero-role,.hero-subtitle,.hero-summary,.hero-actions,.hero-aside{
+.hero-featured,.hero-context,.hero-name,.hero-role,.hero-subtitle,.hero-summary,.hero-focus,.hero-actions,.hero-aside{
   animation:heroIn .9s var(--ease-out) both;
 }
-.hero-context{animation-delay:.05s}
-.hero-name{animation-delay:.12s}
-.hero-role{animation-delay:.19s}
+.hero-featured{animation-delay:.02s}
+.hero-context{animation-delay:.08s}
+.hero-name{animation-delay:.14s}
+.hero-role{animation-delay:.2s}
 .hero-subtitle{animation-delay:.26s}
-.hero-summary{animation-delay:.33s}
-.hero-actions{animation-delay:.4s}
-.hero-aside{animation-delay:.5s}
+.hero-summary{animation-delay:.32s}
+.hero-focus{animation-delay:.38s}
+.hero-actions{animation-delay:.44s}
+.hero-aside{animation-delay:.52s}
 
 /* ============================================================
    KEY IMPACT DASHBOARD — flat dashboard tiles, not glossy cards
@@ -615,35 +668,63 @@ h1.hero-name{
   border:1px solid var(--border);border-radius:var(--radius-lg);
   background:var(--surface);overflow:hidden;
   margin-bottom:var(--sp-6);
+  transition:border-color var(--dur-base) var(--ease-out),box-shadow var(--dur-base) var(--ease-out);
 }
+.project-card:hover{border-color:var(--border-strong);box-shadow:var(--shadow-md)}
 .project-head{
-  display:flex;align-items:flex-start;justify-content:space-between;gap:var(--sp-5);
+  display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:var(--sp-4) var(--sp-5);
   padding:var(--sp-6) var(--sp-7);border-bottom:1px solid var(--border);
 }
-.project-head-left{display:flex;align-items:center;gap:16px}
+.project-head-left{display:flex;align-items:center;gap:16px;min-width:0}
+.project-head-right{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-left:auto}
 .project-index{
   font-family:var(--font-mono);font-size:var(--fs-xs);color:var(--text-faint);
   width:34px;height:34px;border-radius:var(--radius-sm);border:1px solid var(--border);
   display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  transition:color var(--dur-base) var(--ease-out),border-color var(--dur-base) var(--ease-out);
 }
-.project-icon{color:var(--accent-light)}
+.project-card:hover .project-index{color:var(--text-muted);border-color:var(--border-strong)}
+.project-icon{color:var(--accent-light);flex-shrink:0}
 .project-icon .icon{width:22px;height:22px}
 .project-title{font-size:var(--fs-lg);color:var(--ink);font-weight:600}
+.project-subtitle{font-size:var(--fs-sm);color:var(--text-muted);margin-top:4px;max-width:62ch;line-height:1.5}
 .project-body{padding:var(--sp-7)}
 .project-grid{
   display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-7);
 }
 .project-col-label{
-  font-family:var(--font-mono);font-size:10.5px;letter-spacing:.04em;
+  font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;
   color:var(--accent-light);margin-bottom:var(--sp-3);
 }
 .project-col p,.project-col li{font-size:var(--fs-sm);color:var(--text-secondary);line-height:1.55}
 .project-col ul li{position:relative;padding-left:14px;margin-bottom:6px}
 .project-col ul li::before{content:'';position:absolute;left:0;top:9px;width:5px;height:1.5px;background:var(--text-faint)}
+.project-actions{display:flex;flex-wrap:wrap;gap:var(--sp-3)}
+.project-actions .btn{display:inline-flex}
 .project-tech{
   display:flex;flex-wrap:wrap;gap:8px;
   margin-top:var(--sp-6);padding-top:var(--sp-6);border-top:1px solid var(--border);
 }
+
+/* Featured project — the same case-file card, led by the accent instead of the border */
+.project-card.is-featured{
+  position:relative;
+  border-color:var(--accent-soft-strong);
+  background:linear-gradient(180deg,rgba(37,99,235,.10) 0%,var(--surface) 36%);
+  box-shadow:var(--shadow-md);
+}
+.project-card.is-featured::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--accent),var(--accent-light) 40%,transparent);
+  pointer-events:none;
+}
+.project-card.is-featured:hover{border-color:var(--accent-light);box-shadow:var(--shadow-lg)}
+.project-card.is-featured .project-head{border-bottom-color:var(--accent-soft-strong)}
+.project-card.is-featured .project-index,
+.project-card.is-featured:hover .project-index{
+  color:var(--accent-light);border-color:var(--accent-soft-strong);background:var(--accent-soft);
+}
+.project-card.is-featured .project-index .icon{width:15px;height:15px}
 
 @media (max-width:900px){
   .project-grid{grid-template-columns:1fr 1fr;row-gap:var(--sp-6)}
@@ -651,6 +732,7 @@ h1.hero-name{
 @media (max-width:600px){
   .project-grid{grid-template-columns:1fr}
   .project-head,.project-body{padding:var(--sp-5)}
+  .project-head-right{margin-left:0;width:100%}
 }
 
 /* ============================================================
@@ -669,7 +751,11 @@ h1.hero-name{
    SECURITY HARDENING COVERAGE — domain control cards
    ============================================================ */
 .hardening-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-5)}
-.hardening-card{padding:var(--sp-6);border:1px solid var(--border);border-radius:var(--radius-md);background:var(--canvas)}
+.hardening-card{
+  padding:var(--sp-6);border:1px solid var(--border);border-radius:var(--radius-md);background:var(--canvas);
+  transition:transform var(--dur-base) var(--ease-out),border-color var(--dur-base) var(--ease-out),box-shadow var(--dur-base) var(--ease-out);
+}
+.hardening-card:hover{transform:translateY(-4px);border-color:var(--border-strong);box-shadow:var(--shadow-md)}
 .hardening-card .icon{width:20px;height:20px;color:var(--accent-light)}
 .hardening-card-title{font-size:var(--fs-sm);color:var(--ink);font-weight:600;margin-top:var(--sp-4)}
 .hardening-card-sub{font-size:var(--fs-xs);color:var(--text-muted);margin-top:2px;margin-bottom:var(--sp-4)}
@@ -722,7 +808,11 @@ h1.hero-name{
 .coverage-notes{
   display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-6);margin-top:var(--sp-6);
 }
-.coverage-note{padding:var(--sp-6);border:1px solid var(--border);border-radius:var(--radius-md)}
+.coverage-note{
+  padding:var(--sp-6);border:1px solid var(--border);border-radius:var(--radius-md);
+  transition:transform var(--dur-base) var(--ease-out),border-color var(--dur-base) var(--ease-out),box-shadow var(--dur-base) var(--ease-out);
+}
+.coverage-note:hover{transform:translateY(-4px);border-color:var(--border-strong);box-shadow:var(--shadow-md)}
 .coverage-note .icon{width:18px;height:18px;color:var(--accent-light)}
 .coverage-note-title{font-size:var(--fs-sm);color:var(--ink);font-weight:500;margin-top:var(--sp-4)}
 .coverage-note-desc{font-size:var(--fs-xs);color:var(--text-muted);margin-top:6px;line-height:1.55}
@@ -740,7 +830,9 @@ h1.hero-name{
 .recognition-card{
   padding:var(--sp-6);border:1px solid var(--border);border-radius:var(--radius-md);
   background:var(--canvas);
+  transition:transform var(--dur-base) var(--ease-out),border-color var(--dur-base) var(--ease-out),box-shadow var(--dur-base) var(--ease-out);
 }
+.recognition-card:hover{transform:translateY(-4px);border-color:var(--border-strong);box-shadow:var(--shadow-md)}
 .recognition-card .icon{width:20px;height:20px;color:var(--accent-light)}
 .recognition-title{font-size:var(--fs-sm);color:var(--ink);font-weight:500;margin-top:var(--sp-5)}
 .recognition-desc{font-size:var(--fs-xs);color:var(--text-muted);margin-top:6px;line-height:1.55}
@@ -855,6 +947,9 @@ a.contact-channel:hover{color:var(--ink)}
 <symbol id="i-close" viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></symbol>
 <symbol id="i-database" viewBox="0 0 24 24"><ellipse cx="12" cy="5.5" rx="8" ry="3"/><path d="M4 5.5v13c0 1.66 3.58 3 8 3s8-1.34 8-3v-13"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/></symbol>
 <symbol id="i-external-link" viewBox="0 0 24 24"><path d="M9 3h-5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-5"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="20" y2="4"/></symbol>
+<symbol id="i-terminal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><polyline points="7 9 10 12 7 15"/><line x1="12" y1="15" x2="17" y2="15"/></symbol>
+<symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1.1 5.9L12 16.9l-5.3 2.8 1.1-5.9-4.3-4.1 5.9-.8z"/></symbol>
+<symbol id="i-arrow-right" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></symbol>
 </defs>
 </svg>
 
@@ -864,7 +959,7 @@ a.contact-channel:hover{color:var(--ink)}
 <header class="nav" id="mainNav">
   <div class="nav-inner">
     <a href="#home" class="brand" aria-label="Kiran Kumar K — home">
-      <img src="images/favicon-3.png" alt="Logo" class="brand-mark" style="width:38px;height:38px;border-radius:9px;flex-shrink:0">
+      <img src="images/favicon-3.png" alt="" width="38" height="38" class="brand-mark" style="width:38px;height:38px;border-radius:9px;flex-shrink:0">
       <span class="brand-text">
         <span class="brand-name">Kiran Kumar K</span>
         <span class="brand-role">Security Analyst</span>
@@ -910,6 +1005,12 @@ a.contact-channel:hover{color:var(--ink)}
 
   <div class="hero-inner">
     <div class="hero-main">
+      <a href="#shellcraft" class="hero-featured">
+        <span class="hero-featured-tag">New</span>
+        <span>Featured project: Shellcraft — a browser-based security toolkit &amp; Linux lab</span>
+        <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+      </a>
+
       <p class="hero-context">
         <svg class="icon" aria-hidden="true"><use href="#i-building"/></svg>
         Indian Institute of Science (IISc), Bengaluru
@@ -918,8 +1019,16 @@ a.contact-channel:hover{color:var(--ink)}
       <h1 class="hero-name">Kiran Kumar K</h1>
       <p class="hero-role">Security Analyst</p>
 
-      <p class="hero-subtitle">Securing enterprise infrastructure, applications, cloud platforms and digital services.</p>
-      <p class="hero-summary">Security Analyst with hands-on experience in enterprise security operations, vulnerability management, cloud security, endpoint management, application security reviews, incident response, and cybersecurity program implementation.</p>
+      <p class="hero-subtitle">Securing enterprise infrastructure, applications, identities and cloud platforms — from SOC monitoring and threat hunting to penetration testing.</p>
+      <p class="hero-summary">Security Analyst with hands-on experience in enterprise security operations, vulnerability assessment and penetration testing (VAPT), Microsoft Defender, Intune and Entra ID, Azure cloud security, application security reviews, incident response, and end-to-end security program delivery.</p>
+
+      <ul class="hero-focus" aria-label="Focus areas">
+        <li class="tag">SOC monitoring &amp; threat hunting</li>
+        <li class="tag">VAPT</li>
+        <li class="tag">Microsoft Defender · Intune · Entra ID</li>
+        <li class="tag">Azure cloud security</li>
+        <li class="tag">Incident response</li>
+      </ul>
 
       <div class="hero-actions">
         <div class="btn-row">
@@ -951,7 +1060,7 @@ a.contact-channel:hover{color:var(--ink)}
 
     <div class="hero-aside">
 <div class="headshot">
-  <img src="images/headshot.png" alt="Kiran Kumar K" class="headshot-image">
+  <img src="images/headshot.png" alt="Portrait of Kiran Kumar K" class="headshot-image" fetchpriority="high" decoding="async">
   <div class="headshot-frame-mark" aria-hidden="true"></div>
   <div class="headshot-caption">
     <span>Kiran Kumar K</span>
@@ -1137,7 +1246,7 @@ a.contact-channel:hover{color:var(--ink)}
   <div class="container">
     <div class="section-head reveal">
       <h2 class="section-title" id="achievements-title">Core achievements</h2>
-      <p>Nineteen delivered outcomes, organized the way a security program is actually run.</p>
+      <p>Twenty-four delivered outcomes, organized the way a security program is actually run.</p>
     </div>
 
     <div class="achieve-groups">
@@ -1180,7 +1289,7 @@ a.contact-channel:hover{color:var(--ink)}
           <li><svg class="icon" aria-hidden="true"><use href="#i-check-circle"/></svg>Deployed Microsoft Defender across critical enterprise servers.</li>
           <li><svg class="icon" aria-hidden="true"><use href="#i-check-circle"/></svg>Investigated NCCC alerts, IOC reports, honeypot alerts, and threat intelligence feeds.</li>
           <li><svg class="icon" aria-hidden="true"><use href="#i-check-circle"/></svg>Monitored ATP and DoS attacks.</li>
-          <li><svg class="icon" aria-hidden="true"><use href="#i-check-circle"/></svg>Manage 50+ Microsoft Defender alerts and 35+ Azure agentless alerts daily, including threat hunting and forensic investigation of live incidents.</li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-check-circle"/></svg>Triage 50+ Microsoft Defender alerts and 35+ Azure agentless alerts daily, including proactive threat hunting and forensic investigation of live incidents.</li>
           <li><svg class="icon" aria-hidden="true"><use href="#i-check-circle"/></svg>Automated incident-response workflows in Python to parse NCCC reports (IOCs, IOAs, honeypot logs), cutting response time by 40%.</li>
         </ul>
       </div>
@@ -1211,7 +1320,75 @@ a.contact-channel:hover{color:var(--ink)}
   <div class="container">
     <div class="section-head reveal">
       <h2 class="section-title" id="projects-title">Flagship projects</h2>
-      <p>Seven programs that moved IISc's security posture forward, documented the way security leadership reviews them.</p>
+      <p>A featured security toolkit, followed by the enterprise programs that moved IISc's security posture forward and the hands-on labs behind them — each documented the way security leadership reviews it.</p>
+    </div>
+
+    <!-- Featured project — Shellcraft -->
+    <div class="project-card is-featured reveal" id="shellcraft">
+      <div class="project-head">
+        <div class="project-head-left">
+          <span class="project-index" aria-hidden="true"><svg class="icon"><use href="#i-star"/></svg></span>
+          <span class="project-icon"><svg class="icon" aria-hidden="true"><use href="#i-terminal"/></svg></span>
+          <div>
+            <h3 class="project-title">Shellcraft</h3>
+            <p class="project-subtitle">Browser-based security toolkit with a sandboxed Linux terminal, searchable command reference and guided analyst challenges.</p>
+          </div>
+        </div>
+        <div class="project-head-right">
+          <span class="badge">
+            <svg class="icon" aria-hidden="true"><use href="#i-star"/></svg>
+            Featured project
+          </span>
+          <span class="tag">Cybersecurity project</span>
+        </div>
+      </div>
+      <div class="project-body">
+        <div class="project-grid">
+          <div class="project-col">
+            <div class="project-col-label">Overview</div>
+            <p>An advanced cybersecurity toolkit designed for security testing, automation, reconnaissance and security research. Shellcraft pairs a sandboxed in-browser Linux terminal with a searchable command reference and hands-on challenges, so analysts and researchers can rehearse assessment workflows efficiently — no virtual machine, no install.</p>
+          </div>
+          <div class="project-col">
+            <div class="project-col-label">Capabilities</div>
+            <ul>
+              <li>Sandboxed Linux shell with a simulated filesystem, process table, tab completion and command history</li>
+              <li>117-command reference across 13 domains — search, text processing, permissions, processes, networking and encoding</li>
+              <li>15 guided challenges built on realistic artefacts: web-server logs, rotated archives, CSV and JSON data</li>
+              <li>Three skill tiers, persistent progress and light/dark themes in a responsive three-pane workspace</li>
+            </ul>
+          </div>
+          <div class="project-col">
+            <div class="project-col-label">Analyst workflows</div>
+            <ul>
+              <li>Log triage with grep, awk, sed and jq — error counts, top client IPs, hunting across rotated logs</li>
+              <li>Reconnaissance and network analysis: ping, dig, traceroute, curl, ss, nc and tcpdump</li>
+              <li>Process and service hunting: ps, pgrep, journalctl, systemctl and crontab</li>
+              <li>Integrity and encoding checks: sha256sum, base64, xxd and strings</li>
+            </ul>
+          </div>
+          <div class="project-col">
+            <div class="project-col-label">Access project</div>
+            <div class="project-actions">
+              <a href="Shellcraft/index.html" class="btn btn-primary">
+                <svg class="icon" aria-hidden="true"><use href="#i-external-link"/></svg>
+                <span>Launch Shellcraft</span>
+              </a>
+              <a href="https://github.com/KIRAN-KUMAR-K3/kirankumark-portfolio/tree/main/Shellcraft" target="_blank" rel="noopener" class="btn btn-ghost">
+                <svg class="icon" aria-hidden="true"><use href="#i-link"/></svg>
+                <span>Source code</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="project-tech">
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Security Automation</span>
+          <span class="tag">Linux Command Line</span>
+          <span class="tag">Log Analysis</span>
+        </div>
+      </div>
     </div>
 
     <!-- Project 01 -->
@@ -1532,6 +1709,7 @@ a.contact-channel:hover{color:var(--ink)}
           <span class="tag">Stakeholder Reporting</span>
         </div>
       </div>
+    </div>
 
     <!-- Project 08 -->
     <div class="project-card reveal">
@@ -1624,7 +1802,7 @@ a.contact-channel:hover{color:var(--ink)}
           </div>
           <div class="project-col">
             <div class="project-col-label">Access lab</div>
-            <a href="/metasploitable2-penetration-testing-lab/index.html" class="btn btn-primary" style="display:inline-flex">
+            <a href="metasploitable2-penetration-testing-lab/index.html" class="btn btn-primary" style="display:inline-flex">
               <svg class="icon" aria-hidden="true"><use href="#i-external-link"/></svg>
               <span>Start Lab</span>
             </a>
@@ -1658,7 +1836,7 @@ a.contact-channel:hover{color:var(--ink)}
       <div class="ops-pillar stagger-item">
         <svg class="icon" aria-hidden="true"><use href="#i-eye"/></svg>
         <div class="ops-pillar-title">Threat monitoring</div>
-        <div class="ops-pillar-desc">Tracking NCCC alerts, IOC reports, and threat intelligence feeds for early signal.</div>
+        <div class="ops-pillar-desc">Tracking NCCC alerts, IOC reports, and threat intelligence feeds for early signal — and hunting proactively across Defender and Azure telemetry.</div>
       </div>
       <div class="ops-pillar stagger-item">
         <svg class="icon" aria-hidden="true"><use href="#i-shield-check"/></svg>
@@ -1707,7 +1885,7 @@ a.contact-channel:hover{color:var(--ink)}
 <!-- ============================================================
      SECURITY HARDENING COVERAGE
      ============================================================ -->
-<section class="section" id="hardening" aria-labelledby="hardening-title" style="background:var(--surface)">
+<section class="section section-inner-border" id="hardening" aria-labelledby="hardening-title" style="background:var(--surface)">
   <div class="container">
     <div class="section-head reveal">
       <h2 class="section-title" id="hardening-title">Security hardening coverage</h2>
@@ -1977,7 +2155,7 @@ a.contact-channel:hover{color:var(--ink)}
 <!-- ============================================================
      RECOGNITION
      ============================================================ -->
-<section class="section" id="recognition" aria-labelledby="recognition-title" style="background:var(--surface)">
+<section class="section section-inner-border" id="recognition" aria-labelledby="recognition-title" style="background:var(--surface)">
   <div class="container">
     <div class="section-head reveal">
       <h2 class="section-title" id="recognition-title">Recognition &amp; milestones</h2>
@@ -2066,7 +2244,7 @@ a.contact-channel:hover{color:var(--ink)}
   <div class="container">
     <div class="section-head reveal">
       <h2 class="section-title" id="contact-title">Let's talk security</h2>
-      <p>Open to enterprise security roles, program leadership, and collaboration on vulnerability management and cloud security initiatives.</p>
+      <p>Open to Security Analyst, SOC Analyst, Threat Hunter, VAPT and Cybersecurity Engineer roles — including Microsoft security and enterprise security positions — as well as collaboration on vulnerability management and cloud security initiatives.</p>
     </div>
 
     <div class="contact-grid">
@@ -2097,13 +2275,13 @@ a.contact-channel:hover{color:var(--ink)}
           <div class="field-row">
             <div class="field" id="field-name">
               <label for="cf-name">Name</label>
-              <input type="text" id="cf-name" name="name" autocomplete="name" required>
-              <p class="field-error">Please enter your name.</p>
+              <input type="text" id="cf-name" name="name" autocomplete="name" required aria-describedby="cf-name-error">
+              <p class="field-error" id="cf-name-error">Please enter your name.</p>
             </div>
             <div class="field" id="field-email">
               <label for="cf-email">Email</label>
-              <input type="email" id="cf-email" name="email" autocomplete="email" required>
-              <p class="field-error">Please enter a valid email.</p>
+              <input type="email" id="cf-email" name="email" autocomplete="email" required aria-describedby="cf-email-error">
+              <p class="field-error" id="cf-email-error">Please enter a valid email.</p>
             </div>
           </div>
           <div class="field" id="field-subject">
@@ -2112,8 +2290,8 @@ a.contact-channel:hover{color:var(--ink)}
           </div>
           <div class="field" id="field-message">
             <label for="cf-msg">Message</label>
-            <textarea id="cf-msg" name="message" required></textarea>
-            <p class="field-error">Please add a short message.</p>
+            <textarea id="cf-msg" name="message" required aria-describedby="cf-msg-error"></textarea>
+            <p class="field-error" id="cf-msg-error">Please add a short message.</p>
           </div>
           <button type="submit" class="btn btn-primary btn-block" id="formSubmit">
             <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>
@@ -2136,12 +2314,13 @@ a.contact-channel:hover{color:var(--ink)}
   <div class="container">
     <div class="footer-inner">
       <div class="footer-left">
-        <img src="images/favicon-3.png" alt="Logo" style="width:32px;height:32px;border-radius:6px;flex-shrink:0">
+        <img src="images/favicon-3.png" alt="" width="32" height="32" loading="lazy" style="width:32px;height:32px;border-radius:6px;flex-shrink:0">
         <span class="footer-name">Kiran Kumar K — Security Analyst, IISc Bengaluru</span>
       </div>
       <nav class="footer-links" aria-label="Footer">
         <a href="#journey">Experience</a>
         <a href="#projects">Projects</a>
+        <a href="Shellcraft/index.html">Shellcraft</a>
         <a href="#expertise">Expertise</a>
         <a href="https://github.com/KIRAN-KUMAR-K3" target="_blank" rel="noopener">GitHub</a>
         <a href="https://linkedin.com/in/kiran-kumar-k3" target="_blank" rel="noopener">LinkedIn</a>
@@ -2209,7 +2388,9 @@ a.contact-channel:hover{color:var(--ink)}
       if (window.scrollY >= s.offsetTop - 160) current = s.id;
     });
     navAnchors.forEach(function(a){
-      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+      var isActive = a.getAttribute('href') === '#' + current;
+      a.classList.toggle('active', isActive);
+      if (isActive) a.setAttribute('aria-current', 'location'); else a.removeAttribute('aria-current');
     });
   }
   setActiveLink();
@@ -2274,7 +2455,10 @@ a.contact-channel:hover{color:var(--ink)}
     var statusEl = document.getElementById('formStatus');
     function setError(fieldId, hasError){
       var field = document.getElementById(fieldId);
-      if (field) field.classList.toggle('has-error', hasError);
+      if (!field) return;
+      field.classList.toggle('has-error', hasError);
+      var control = field.querySelector('input, textarea');
+      if (control) control.setAttribute('aria-invalid', hasError ? 'true' : 'false');
     }
     function isValidEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
 
